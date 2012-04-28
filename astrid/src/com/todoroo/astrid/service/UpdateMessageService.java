@@ -30,7 +30,6 @@ import com.todoroo.astrid.dao.StoreObjectDao;
 import com.todoroo.astrid.dao.StoreObjectDao.StoreObjectCriteria;
 import com.todoroo.astrid.data.StoreObject;
 import com.todoroo.astrid.gtasks.GtasksPreferenceService;
-import com.todoroo.astrid.producteev.ProducteevUtilities;
 import com.todoroo.astrid.utility.Constants;
 
 /**
@@ -44,7 +43,7 @@ public class UpdateMessageService {
 
     private static final String URL = "http://www.weloveastrid.com/updates.php";
 
-    private static final String PLUGIN_PDV = "pdv";
+//    private static final String PLUGIN_PDV = "pdv";
     private static final String PLUGIN_GTASKS = "gtasks";
     private static final String PLUGIN_RMILK = "rmilk";
 
@@ -151,10 +150,11 @@ public class UpdateMessageService {
 
     private boolean pluginConditionMatches(String plugin) {
         // handle internal plugin specially
-        if(PLUGIN_PDV.equals(plugin)) {
-            return ProducteevUtilities.INSTANCE.isLoggedIn();
-        }
-        else if(PLUGIN_GTASKS.equals(plugin)) {
+//        if(PLUGIN_PDV.equals(plugin)) {
+//            return ProducteevUtilities.INSTANCE.isLoggedIn();
+//        }
+//        else
+        if(PLUGIN_GTASKS.equals(plugin)) {
             return gtasksPreferenceService.isLoggedIn();
         }
         else if(PLUGIN_RMILK.equals(plugin)) {

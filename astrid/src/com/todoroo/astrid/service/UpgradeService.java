@@ -35,7 +35,6 @@ import com.todoroo.astrid.data.Task;
 import com.todoroo.astrid.gtasks.GtasksPreferenceService;
 import com.todoroo.astrid.helper.DueDateTimeMigrator;
 import com.todoroo.astrid.notes.NoteMetadata;
-import com.todoroo.astrid.producteev.sync.ProducteevDataService;
 import com.todoroo.astrid.service.abtesting.ABChooser;
 import com.todoroo.astrid.tags.TagCaseMigrator;
 import com.todoroo.astrid.utility.AstridPreferences;
@@ -618,7 +617,8 @@ public final class UpgradeService {
                 created = metadata.getValue(PDV_NOTE_CREATED);
                 title = DateUtilities.getDateStringWithWeekday(ContextManager.getContext(),
                     new Date(created));
-                provider = ProducteevDataService.NOTE_PROVIDER;
+//                provider = ProducteevDataService.NOTE_PROVIDER;
+                provider=null;
             }
 
             metadata.setValue(Metadata.KEY, NoteMetadata.METADATA_KEY);

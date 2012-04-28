@@ -13,8 +13,6 @@ import android.widget.ToggleButton;
 import com.timsu.astrid.R;
 import com.todoroo.astrid.data.Task;
 import com.todoroo.astrid.helper.TaskEditControlSet;
-import com.todoroo.astrid.opencrx.OpencrxCoreUtils;
-import com.todoroo.astrid.producteev.ProducteevUtilities;
 
 /**
  * Control Set for setting task importance
@@ -58,9 +56,9 @@ public class ImportanceControlSet extends TaskEditControlSet {
     }
 
     private int getTextSize() {
-        if (ProducteevUtilities.INSTANCE.isLoggedIn())
-            return 14;
-        else
+//        if (ProducteevUtilities.INSTANCE.isLoggedIn())
+//            return 14;
+//        else
             return 24;
     }
 
@@ -88,8 +86,8 @@ public class ImportanceControlSet extends TaskEditControlSet {
         int min = Task.IMPORTANCE_MOST;
         int max = Task.IMPORTANCE_LEAST;
         //grayColor = colors[max];
-        if(ProducteevUtilities.INSTANCE.isLoggedIn() || OpencrxCoreUtils.INSTANCE.isLoggedIn())
-            max = 5;
+//        if(ProducteevUtilities.INSTANCE.isLoggedIn() || OpencrxCoreUtils.INSTANCE.isLoggedIn())
+//            max = 5;
         //else
             //colors[max] = activity.getResources().getColor(android.R.color.white);
 
@@ -104,24 +102,24 @@ public class ImportanceControlSet extends TaskEditControlSet {
             LinearLayout.LayoutParams params;
 
             int dimension;
-            if (ProducteevUtilities.INSTANCE.isLoggedIn()) {
+//            if (ProducteevUtilities.INSTANCE.isLoggedIn()) {
+//                dimension = 38;
+//            } else {
                 dimension = 38;
-            } else {
-                dimension = 38;
-            }
+//            }
             params = new LinearLayout.LayoutParams((int) (metrics.density * dimension), (int) (metrics.density * dimension));
             usedWidth += dimension;
             button.setLayoutParams(params);
 
             StringBuilder label = new StringBuilder();
-            if(ProducteevUtilities.INSTANCE.isLoggedIn() || OpencrxCoreUtils.INSTANCE.isLoggedIn())
-                label.append(5 - i).append("\n\u2605"); //$NON-NLS-1$
-            else {
+//            if(ProducteevUtilities.INSTANCE.isLoggedIn() || OpencrxCoreUtils.INSTANCE.isLoggedIn())
+//                label.append(5 - i).append("\n\u2605"); //$NON-NLS-1$
+//            else {
                 if (i == max)
                     label.append('\u25CB');
                 for(int j = Task.IMPORTANCE_LEAST - 1; j >= i; j--)
                     label.append('!');
-            }
+//            }
 
             button.setTextColor(colors[i]);
             button.setTextOff(label);

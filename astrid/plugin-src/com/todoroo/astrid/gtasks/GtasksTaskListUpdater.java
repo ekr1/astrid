@@ -24,7 +24,6 @@ import com.todoroo.astrid.data.StoreObject;
 import com.todoroo.astrid.data.Task;
 import com.todoroo.astrid.gtasks.sync.GtasksSyncService;
 import com.todoroo.astrid.subtasks.OrderedListUpdater;
-import com.todoroo.astrid.subtasks.OrderedListUpdater.OrderedListIterator;
 
 public class GtasksTaskListUpdater extends OrderedListUpdater<StoreObject> {
 
