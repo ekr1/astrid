@@ -75,7 +75,6 @@ import com.todoroo.astrid.dao.Database;
 import com.todoroo.astrid.dao.TaskDao.TaskCriteria;
 import com.todoroo.astrid.data.TagData;
 import com.todoroo.astrid.data.Task;
-import com.todoroo.astrid.helper.SyncActionHelper;
 import com.todoroo.astrid.helper.TaskListContextMenuExtensionLoader;
 import com.todoroo.astrid.helper.TaskListContextMenuExtensionLoader.ContextMenuItem;
 import com.todoroo.astrid.reminders.ReminderDebugContextActions;
@@ -90,7 +89,6 @@ import com.todoroo.astrid.service.TaskService;
 import com.todoroo.astrid.service.ThemeService;
 import com.todoroo.astrid.service.UpgradeService;
 import com.todoroo.astrid.subtasks.SubtasksListFragment;
-import com.todoroo.astrid.sync.SyncProviderPreferences;
 import com.todoroo.astrid.ui.QuickAddBar;
 import com.todoroo.astrid.utility.AstridPreferences;
 import com.todoroo.astrid.utility.Constants;
@@ -126,7 +124,7 @@ public class TaskListFragment extends ListFragment implements OnScrollListener,
     protected static final int MENU_ADDONS_ID = R.string.TLA_menu_addons;
     protected static final int MENU_SETTINGS_ID = R.string.TLA_menu_settings;
     protected static final int MENU_SORT_ID = R.string.TLA_menu_sort;
-    protected static final int MENU_SYNC_ID = R.string.TLA_menu_sync;
+//    protected static final int MENU_SYNC_ID = R.string.TLA_menu_sync;
     protected static final int MENU_SUPPORT_ID = R.string.TLA_menu_support;
     protected static final int MENU_NEW_FILTER_ID = R.string.FLA_new_filter;
     protected static final int MENU_ADDON_INTENT_ID = Menu.FIRST + 199;
@@ -175,7 +173,7 @@ public class TaskListFragment extends ListFragment implements OnScrollListener,
     protected DetailReceiver detailReceiver = new DetailReceiver();
     protected RefreshReceiver refreshReceiver = new RefreshReceiver();
     protected final AtomicReference<String> sqlQueryTemplate = new AtomicReference<String>();
-    protected SyncActionHelper syncActionHelper;
+//    protected SyncActionHelper syncActionHelper;
     protected Filter filter;
     protected int sortFlags;
     protected int sortSort;
@@ -314,7 +312,7 @@ public class TaskListFragment extends ListFragment implements OnScrollListener,
         // We have a menu item to show in action bar.
         setHasOptionsMenu(true);
 
-        syncActionHelper = new SyncActionHelper(getActivity(), this);
+//        syncActionHelper = new SyncActionHelper(getActivity(), this);
         setUpUiComponents();
         initializeData();
         setupQuickAddBar();
@@ -378,10 +376,10 @@ public class TaskListFragment extends ListFragment implements OnScrollListener,
         contextMenuExtensionLoader.loadInNewThread(getActivity());
     }
 
-    protected void addSyncRefreshMenuItem(Menu menu, int themeFlags) {
-        addMenuItem(menu, R.string.TLA_menu_sync,
-                ThemeService.getDrawable(R.drawable.icn_menu_refresh, themeFlags), MENU_SYNC_ID, true);
-    }
+//    protected void addSyncRefreshMenuItem(Menu menu, int themeFlags) {
+//        addMenuItem(menu, R.string.TLA_menu_sync,
+//                ThemeService.getDrawable(R.drawable.icn_menu_refresh, themeFlags), MENU_SYNC_ID, true);
+//    }
 
     protected void addMenuItem(Menu menu, int title, int imageRes, int id, boolean showAsAction) {
         AstridActivity activity = (AstridActivity) getActivity();
@@ -430,7 +428,7 @@ public class TaskListFragment extends ListFragment implements OnScrollListener,
         }
 
         // --- sync
-        addSyncRefreshMenuItem(menu, isTablet ? ThemeService.FLAG_INVERT : 0);
+//        addSyncRefreshMenuItem(menu, isTablet ? ThemeService.FLAG_INVERT : 0);
 
         // --- new filter
         addMenuItem(menu, R.string.FLA_new_filter,
@@ -589,7 +587,7 @@ public class TaskListFragment extends ListFragment implements OnScrollListener,
                 new IntentFilter(AstridApiConstants.BROADCAST_SEND_DECORATIONS));
         getActivity().registerReceiver(refreshReceiver,
                 new IntentFilter(AstridApiConstants.BROADCAST_EVENT_REFRESH));
-        syncActionHelper.register();
+//        syncActionHelper.register();
 
         if (Flags.checkAndClear(Flags.REFRESH)) {
             refresh();
@@ -616,7 +614,7 @@ public class TaskListFragment extends ListFragment implements OnScrollListener,
             showListsHelp();
         }
         refreshFilterCount();
-        initiateAutomaticSync();
+//        initiateAutomaticSync();
     }
 
     protected boolean isCurrentTaskListFragment() {
@@ -627,6 +625,7 @@ public class TaskListFragment extends ListFragment implements OnScrollListener,
         return false;
     }
 
+    /*
     public final void initiateAutomaticSync() {
         final AstridActivity activity = (AstridActivity) getActivity();
         if (activity == null)
@@ -659,6 +658,7 @@ public class TaskListFragment extends ListFragment implements OnScrollListener,
         if (isCurrentTaskListFragment())
             syncActionHelper.initiateAutomaticSync(filter);
     }
+*/
 
     // Subclasses should override this
     public void requestCommentCountUpdate() {
@@ -673,7 +673,7 @@ public class TaskListFragment extends ListFragment implements OnScrollListener,
 
         AndroidUtilities.tryUnregisterReceiver(getActivity(), detailReceiver);
         AndroidUtilities.tryUnregisterReceiver(getActivity(), refreshReceiver);
-        syncActionHelper.unregister();
+//        syncActionHelper.unregister();
 
         backgroundTimer.cancel();
     }
@@ -755,9 +755,11 @@ public class TaskListFragment extends ListFragment implements OnScrollListener,
                 getActivity().startActivity(getActivity().getIntent());
                 TasksWidget.updateWidgets(getActivity());
                 return;
-            } else if (resultCode == SyncProviderPreferences.RESULT_CODE_SYNCHRONIZE) {
-                Preferences.setLong(SyncActionHelper.PREF_LAST_AUTO_SYNC, 0); // Forces autosync to occur after login
             }
+/*
+            else if (resultCode == SyncProviderPreferences.RESULT_CODE_SYNCHRONIZE) {
+                Preferences.setLong(SyncActionHelper.PREF_LAST_AUTO_SYNC, 0); // Forces autosync to occur after login
+*/
         }
 
         super.onActivityResult(requestCode, resultCode, data);
@@ -837,7 +839,7 @@ public class TaskListFragment extends ListFragment implements OnScrollListener,
             getListView().setSelection(oldListItemSelected);
 
         // also load sync actions
-        syncActionHelper.request();
+//        syncActionHelper.request();
     }
 
     protected TaskAdapter createTaskAdapter(TodorooCursor<Task> cursor) {
@@ -1147,10 +1149,10 @@ public class TaskListFragment extends ListFragment implements OnScrollListener,
                     getActivity(), hasDraggableOption(), this, sortFlags, sortSort);
             dialog.show();
             return true;
-        case MENU_SYNC_ID:
-            StatisticsService.reportEvent(StatisticsConstants.TLA_MENU_SYNC);
-            syncActionHelper.performSyncAction();
-            return true;
+//        case MENU_SYNC_ID:
+//            StatisticsService.reportEvent(StatisticsConstants.TLA_MENU_SYNC);
+//            syncActionHelper.performSyncAction();
+//            return true;
         case MENU_ADDON_INTENT_ID:
             AndroidUtilities.startExternalIntent(getActivity(), intent,
                     ACTIVITY_MENU_EXTERNAL);

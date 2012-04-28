@@ -20,8 +20,6 @@ import com.todoroo.astrid.dao.StoreObjectDao;
 import com.todoroo.astrid.data.StoreObject;
 import com.todoroo.astrid.data.Task;
 import com.todoroo.astrid.helper.ProgressBarSyncResultCallback;
-import com.todoroo.astrid.service.SyncV2Service;
-import com.todoroo.astrid.service.ThemeService;
 import com.todoroo.astrid.subtasks.OrderedListFragmentHelper;
 import com.todoroo.astrid.subtasks.SubtasksListFragment;
 
@@ -41,7 +39,7 @@ public class GtasksListFragment extends SubtasksListFragment {
 
     @Autowired private GtasksPreferenceService gtasksPreferenceService;
 
-    @Autowired private SyncV2Service syncService;
+//    @Autowired private SyncV2Service syncService;
 
     private StoreObject list;
 
@@ -73,6 +71,7 @@ public class GtasksListFragment extends SubtasksListFragment {
         ((OrderedListFragmentHelper<StoreObject>)helper).setList(list);
     }
 
+/*
     @Override
     protected void initiateAutomaticSyncImpl() {
         if (!isCurrentTaskListFragment())
@@ -81,6 +80,7 @@ public class GtasksListFragment extends SubtasksListFragment {
             refreshData(false);
         }
     }
+*/
 
     private void refreshData(final boolean manual) {
         ((TextView)getView().findViewById(android.R.id.empty)).setText(R.string.DLG_loading);
@@ -113,9 +113,11 @@ public class GtasksListFragment extends SubtasksListFragment {
     public boolean handleOptionsMenuItemSelected(int id, Intent intent) {
      // handle my own menus
         switch (id) {
+/*
         case MENU_REFRESH_ID:
             refreshData(true);
             return true;
+*/
         case MENU_CLEAR_COMPLETED_ID:
             clearCompletedTasks();
             return true;
@@ -166,14 +168,14 @@ public class GtasksListFragment extends SubtasksListFragment {
         }.start();
     }
 
-    @Override
-    protected void addSyncRefreshMenuItem(Menu menu, int themeFlags) {
-        if(gtasksPreferenceService.isLoggedIn()) {
-            addMenuItem(menu, R.string.actfm_TVA_menu_refresh,
-                    ThemeService.getDrawable(R.drawable.icn_menu_refresh, themeFlags), MENU_REFRESH_ID, true);
-        } else {
-            super.addSyncRefreshMenuItem(menu, themeFlags);
-        }
-    }
+//    @Override
+//    protected void addSyncRefreshMenuItem(Menu menu, int themeFlags) {
+//        if(gtasksPreferenceService.isLoggedIn()) {
+//            addMenuItem(menu, R.string.actfm_TVA_menu_refresh,
+//                    ThemeService.getDrawable(R.drawable.icn_menu_refresh, themeFlags), MENU_REFRESH_ID, true);
+//        } else {
+//            super.addSyncRefreshMenuItem(menu, themeFlags);
+//        }
+//    }
 
 }

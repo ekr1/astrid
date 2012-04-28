@@ -51,7 +51,6 @@ import com.todoroo.astrid.gtasks.GtasksPreferenceService;
 import com.todoroo.astrid.gtasks.api.GtasksInvoker;
 import com.todoroo.astrid.service.AstridDependencyInjector;
 import com.todoroo.astrid.service.StatisticsService;
-import com.todoroo.astrid.service.SyncV2Service;
 
 /**
  * This activity allows users to sign in or log in to Google Tasks
@@ -64,7 +63,7 @@ public class GtasksLoginActivity extends ListActivity {
 
     @Autowired private GtasksPreferenceService gtasksPreferenceService;
 
-    @Autowired private SyncV2Service syncService;
+//    @Autowired private SyncV2Service syncService;
 
     // --- ui initialization
 

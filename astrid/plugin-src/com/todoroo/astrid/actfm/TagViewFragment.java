@@ -11,7 +11,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.support.v4.view.Menu;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
@@ -33,7 +32,6 @@ import com.todoroo.andlib.service.NotificationManager.AndroidNotificationManager
 import com.todoroo.andlib.sql.Criterion;
 import com.todoroo.andlib.sql.Query;
 import com.todoroo.andlib.utility.AndroidUtilities;
-import com.todoroo.andlib.utility.DateUtilities;
 import com.todoroo.andlib.utility.Preferences;
 import com.todoroo.astrid.actfm.sync.ActFmPreferenceService;
 import com.todoroo.astrid.actfm.sync.ActFmSyncService;
@@ -50,10 +48,7 @@ import com.todoroo.astrid.data.TagData;
 import com.todoroo.astrid.data.Task;
 import com.todoroo.astrid.data.Update;
 import com.todoroo.astrid.helper.AsyncImageView;
-import com.todoroo.astrid.helper.ProgressBarSyncResultCallback;
-import com.todoroo.astrid.service.SyncV2Service;
 import com.todoroo.astrid.service.TagDataService;
-import com.todoroo.astrid.service.ThemeService;
 import com.todoroo.astrid.subtasks.SubtasksTagListFragment;
 import com.todoroo.astrid.tags.TagFilterExposer;
 import com.todoroo.astrid.tags.TagService.Tag;
@@ -85,7 +80,7 @@ public class TagViewFragment extends TaskListFragment {
 
     @Autowired ActFmPreferenceService actFmPreferenceService;
 
-    @Autowired SyncV2Service syncService;
+//    @Autowired SyncV2Service syncService;
 
     protected View taskListView;
 
@@ -160,15 +155,15 @@ public class TagViewFragment extends TaskListFragment {
         }
     }
 
-    @Override
-    protected void addSyncRefreshMenuItem(Menu menu, int themeFlags) {
-        if(actFmPreferenceService.isLoggedIn()) {
-            addMenuItem(menu, R.string.actfm_TVA_menu_refresh,
-                    ThemeService.getDrawable(R.drawable.icn_menu_refresh, themeFlags), MENU_REFRESH_ID, true);
-        } else {
-            super.addSyncRefreshMenuItem(menu, themeFlags);
-        }
-    }
+//    @Override
+//    protected void addSyncRefreshMenuItem(Menu menu, int themeFlags) {
+//        if(actFmPreferenceService.isLoggedIn()) {
+//            addMenuItem(menu, R.string.actfm_TVA_menu_refresh,
+//                    ThemeService.getDrawable(R.drawable.icn_menu_refresh, themeFlags), MENU_REFRESH_ID, true);
+//        } else {
+//            super.addSyncRefreshMenuItem(menu, themeFlags);
+//        }
+//    }
 
     // --- data loading
 
@@ -265,6 +260,7 @@ public class TagViewFragment extends TaskListFragment {
     // --------------------------------------------------------- refresh data
 
 
+/*
     @Override
     protected void initiateAutomaticSyncImpl() {
         if (!isCurrentTaskListFragment())
@@ -293,6 +289,7 @@ public class TagViewFragment extends TaskListFragment {
         }));
         Preferences.setLong(LAST_FETCH_KEY + tagData.getId(), DateUtilities.now());
     }
+*/
 
     private void setUpMembersGallery() {
         LinearLayout membersView = (LinearLayout)getView().findViewById(R.id.shared_with);
@@ -448,7 +445,7 @@ public class TagViewFragment extends TaskListFragment {
                     //refreshUpdatesList();
                 }
             });
-            refreshData(false);
+//            refreshData(false);
 
             NotificationManager nm = new AndroidNotificationManager(ContextManager.getContext());
             nm.cancel(tagData.getValue(TagData.REMOTE_ID).intValue());
@@ -499,11 +496,11 @@ public class TagViewFragment extends TaskListFragment {
     @Override
     public boolean handleOptionsMenuItemSelected(int id, Intent intent) {
         // handle my own menus
-        switch (id) {
-        case MENU_REFRESH_ID:
-            refreshData(true);
-            return true;
-        }
+//        switch (id) {
+//        case MENU_REFRESH_ID:
+//            refreshData(true);
+//            return true;
+//        }
 
         return super.handleOptionsMenuItemSelected(id, intent);
     }
