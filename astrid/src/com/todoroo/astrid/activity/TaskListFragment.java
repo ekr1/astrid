@@ -56,7 +56,6 @@ import com.todoroo.andlib.service.DependencyInjectionService;
 import com.todoroo.andlib.service.ExceptionService;
 import com.todoroo.andlib.utility.AndroidUtilities;
 import com.todoroo.andlib.utility.Preferences;
-import com.todoroo.astrid.actfm.ActFmLoginActivity;
 import com.todoroo.astrid.actfm.TagUpdatesActivity;
 import com.todoroo.astrid.actfm.TagViewFragment;
 import com.todoroo.astrid.actfm.sync.ActFmPreferenceService;
@@ -97,7 +96,6 @@ import com.todoroo.astrid.utility.AstridPreferences;
 import com.todoroo.astrid.utility.Constants;
 import com.todoroo.astrid.utility.Flags;
 import com.todoroo.astrid.welcome.HelpInfoPopover;
-import com.todoroo.astrid.welcome.tutorial.WelcomeWalkthrough;
 import com.todoroo.astrid.widget.TasksWidget;
 
 /**
@@ -599,16 +597,16 @@ public class TaskListFragment extends ListFragment implements OnScrollListener,
 
         setUpBackgroundJobs();
 
-        if (!Preferences.getBoolean(
-                WelcomeWalkthrough.KEY_SHOWED_WELCOME_LOGIN, false)) {
-            Preferences.setBoolean(WelcomeWalkthrough.KEY_SHOWED_WELCOME_LOGIN,
-                    true);
-            Intent showWelcomeLogin = new Intent(getActivity(),
-                    WelcomeWalkthrough.class);
-            showWelcomeLogin.putExtra(ActFmLoginActivity.SHOW_TOAST, false);
-            startActivity(showWelcomeLogin);
-            return;
-        }
+//        if (!Preferences.getBoolean(
+//                WelcomeWalkthrough.KEY_SHOWED_WELCOME_LOGIN, false)) {
+//            Preferences.setBoolean(WelcomeWalkthrough.KEY_SHOWED_WELCOME_LOGIN,
+//                    true);
+//            Intent showWelcomeLogin = new Intent(getActivity(),
+//                    WelcomeWalkthrough.class);
+//            showWelcomeLogin.putExtra(ActFmLoginActivity.SHOW_TOAST, false);
+//            startActivity(showWelcomeLogin);
+//            return;
+//        }
 
         if (!Preferences.getBoolean(R.string.p_showed_add_task_help, false)) {
             showTaskCreateHelpPopover();

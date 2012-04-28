@@ -58,7 +58,7 @@ public class WelcomePagerAdapter extends PagerAdapter implements TitleProvider
     };
 
     private final Context context;
-    public WelcomeWalkthrough parent;
+//    public WelcomeWalkthrough parent;
     @Autowired ActFmPreferenceService actFmPreferenceService;
 
     public WelcomePagerAdapter(Context context, boolean manual) {
@@ -77,7 +77,7 @@ public class WelcomePagerAdapter extends PagerAdapter implements TitleProvider
     public void setPrimaryItem(ViewGroup container, int position, Object object) {
         super.setPrimaryItem(container, position, object);
 
-        parent.onPageChanged(container, position);
+//        parent.onPageChanged(container, position);
     }
 
 
@@ -107,7 +107,7 @@ public class WelcomePagerAdapter extends PagerAdapter implements TitleProvider
         }
 
         ((ViewPager) pager).addView(pageView, 0);
-        parent.instantiatePage(position);
+//        parent.instantiatePage(position);
         return pageView;
     }
 

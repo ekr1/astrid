@@ -764,8 +764,10 @@ public class EditPeopleControlSet extends PopupControlSet {
                 DialogInterface.OnClickListener okListener = new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface d, int which) {
+                        /*
                         fragment.startActivityForResult(new Intent(activity, ActFmLoginActivity.class),
                                 loginRequestCode);
+                               */
                     }
                 };
 

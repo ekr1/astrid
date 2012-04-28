@@ -41,7 +41,6 @@ import com.todoroo.andlib.utility.AndroidUtilities;
 import com.todoroo.andlib.utility.DialogUtilities;
 import com.todoroo.andlib.utility.Preferences;
 import com.todoroo.andlib.utility.TodorooPreferenceActivity;
-import com.todoroo.astrid.actfm.ActFmLoginActivity;
 import com.todoroo.astrid.api.AstridApiConstants;
 import com.todoroo.astrid.core.LabsPreferences;
 import com.todoroo.astrid.dao.Database;
@@ -58,7 +57,6 @@ import com.todoroo.astrid.utility.Constants;
 import com.todoroo.astrid.utility.Flags;
 import com.todoroo.astrid.voice.VoiceInputAssistant;
 import com.todoroo.astrid.voice.VoiceOutputService;
-import com.todoroo.astrid.welcome.tutorial.WelcomeWalkthrough;
 import com.todoroo.astrid.widget.TasksWidget;
 
 /**
@@ -127,10 +125,10 @@ public class EditPreferences extends TodorooPreferenceActivity {
         preference.setOnPreferenceClickListener(new OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference p) {
-                Intent showWelcomeLogin = new Intent(EditPreferences.this, WelcomeWalkthrough.class);
-                showWelcomeLogin.putExtra(ActFmLoginActivity.SHOW_TOAST, false);
-                showWelcomeLogin.putExtra(WelcomeWalkthrough.TOKEN_MANUAL_SHOW, true);
-                startActivity(showWelcomeLogin);
+//                Intent showWelcomeLogin = new Intent(EditPreferences.this, WelcomeWalkthrough.class);
+//                showWelcomeLogin.putExtra(ActFmLoginActivity.SHOW_TOAST, false);
+//                showWelcomeLogin.putExtra(WelcomeWalkthrough.TOKEN_MANUAL_SHOW, true);
+//                startActivity(showWelcomeLogin);
                 return true;
             }
         });
