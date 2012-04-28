@@ -678,7 +678,7 @@ msgstr "Wählen Sie eine Datei zum Wiederherstellen"
 #. Application Name (shown on home screen & in launcher)
 msgctxt "app_name"
 msgid "Astrid Tasks"
-msgstr "Astrid Aufgaben"
+msgstr "Astrid Aufgaben ekr"
 
 #. permission title for READ_TASKS
 msgctxt "read_permission_label"
