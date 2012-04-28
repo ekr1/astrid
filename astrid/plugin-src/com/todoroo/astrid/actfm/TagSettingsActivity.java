@@ -279,8 +279,8 @@ public class TagSettingsActivity extends FragmentActivity {
             DialogInterface.OnClickListener okListener = new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface d, int which) {
-                    startActivityForResult(new Intent(TagSettingsActivity.this, ActFmLoginActivity.class),
-                            REQUEST_ACTFM_LOGIN);
+//                    startActivityForResult(new Intent(TagSettingsActivity.this, ActFmLoginActivity.class),
+//                            REQUEST_ACTFM_LOGIN);
                 }
             };
 

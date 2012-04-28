@@ -27,7 +27,6 @@ import com.todoroo.andlib.service.DependencyInjectionService;
 import com.todoroo.andlib.service.ExceptionService;
 import com.todoroo.andlib.utility.DialogUtilities;
 import com.todoroo.andlib.utility.Preferences;
-import com.todoroo.astrid.actfm.ActFmLoginActivity;
 import com.todoroo.astrid.actfm.EditPeopleControlSet;
 import com.todoroo.astrid.actfm.sync.ActFmPreferenceService;
 import com.todoroo.astrid.activity.AstridActivity;
@@ -248,7 +247,7 @@ public class QuickAddBar extends LinearLayout {
                 DialogInterface.OnClickListener okListener = new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface d, int which) {
-                        activity.startActivity(new Intent(activity, ActFmLoginActivity.class));
+                    //    activity.startActivity(new Intent(activity, ActFmLoginActivity.class));
                     }
                 };
 

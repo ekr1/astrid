@@ -225,8 +225,8 @@ public class TagUpdatesFragment extends ListFragment {
 
                     @Override
                     public void onClick(View v) {
-                        startActivityForResult(new Intent(getActivity(), ActFmLoginActivity.class),
-                                TagSettingsActivity.REQUEST_ACTFM_LOGIN);
+//                        startActivityForResult(new Intent(getActivity(), ActFmLoginActivity.class),
+//                                TagSettingsActivity.REQUEST_ACTFM_LOGIN);
                     }
                 });
             }
