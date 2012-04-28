@@ -114,7 +114,7 @@ public class AstridDependencyInjector extends AbstractDependencyInjector {
         // these make reference to fields defined above
         injectables.put("errorReporters", new ErrorReporter[] {
                 new AndroidLogReporter(),
-                new FlurryReporter()
+//                new FlurryReporter()
         });
     }
 
