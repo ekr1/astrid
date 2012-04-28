@@ -156,7 +156,7 @@ public class StartupService {
             exceptionService.reportError("astrid-startup-package-read", e); //$NON-NLS-1$
         }
 
-        Log.i("astrid", "Astrid Startup. " + latestSetVersion + //$NON-NLS-1$ //$NON-NLS-2$
+        Log.i("astrid", "Astrid Startup. ekr " + latestSetVersion + //$NON-NLS-1$ //$NON-NLS-2$
                 " => " + version); //$NON-NLS-1$
 
         databaseRestoreIfEmpty(context);
