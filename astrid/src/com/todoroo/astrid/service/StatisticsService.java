@@ -4,19 +4,11 @@
 
 package com.todoroo.astrid.service;
 
-import java.util.HashMap;
-
-import android.app.Activity;
 import android.content.Context;
-
-import com.localytics.android.LocalyticsSession;
-import com.timsu.astrid.R;
-import com.todoroo.andlib.utility.Preferences;
-import com.todoroo.astrid.utility.Constants;
 
 public class StatisticsService {
 
-    private static LocalyticsSession localyticsSession;
+  //  private static LocalyticsSession localyticsSession;
 
     /**
      * Indicate session started
@@ -24,20 +16,20 @@ public class StatisticsService {
      * @param context
      */
     public static void sessionStart(Context context) {
-        if(dontCollectStatistics())
-            return;
+//        if(dontCollectStatistics())
+//            return;
 
-        if(localyticsSession != null) {
-            localyticsSession.open(); // Multiple calls to open are ok, we just need to make sure it gets reopened after pause
-        } else {
-            localyticsSession = new LocalyticsSession(context.getApplicationContext(),
-                    Constants.LOCALYTICS_KEY);
-            localyticsSession.open();
-            localyticsSession.upload();
-        }
-
-        if (context instanceof Activity)
-            localyticsSession.tagScreen(context.getClass().getSimpleName());
+//        if(localyticsSession != null) {
+//            localyticsSession.open(); // Multiple calls to open are ok, we just need to make sure it gets reopened after pause
+//        } else {
+//            localyticsSession = new LocalyticsSession(context.getApplicationContext(),
+//                    Constants.LOCALYTICS_KEY);
+//            localyticsSession.open();
+//            localyticsSession.upload();
+//        }
+//
+//        if (context instanceof Activity)
+//            localyticsSession.tagScreen(context.getClass().getSimpleName());
     }
 
     /**
@@ -46,23 +38,23 @@ public class StatisticsService {
      * @param context
      */
     public static void sessionStop(Context context) {
-        if(dontCollectStatistics())
-            return;
-
-        if(localyticsSession != null)
-            localyticsSession.upload();
+//        if(dontCollectStatistics())
+//            return;
+//
+//        if(localyticsSession != null)
+//            localyticsSession.upload();
     }
 
     /**
      * Indicate session was paused
      */
     public static void sessionPause() {
-        if(dontCollectStatistics())
-            return;
-
-        if(localyticsSession != null) {
-            localyticsSession.close();
-        }
+//        if(dontCollectStatistics())
+//            return;
+//
+//        if(localyticsSession != null) {
+//            localyticsSession.close();
+//        }
     }
 
     /**
@@ -80,6 +72,7 @@ public class StatisticsService {
      * @param event
      */
     public static void reportEvent(String event, String... attributes) {
+/*
         if(dontCollectStatistics())
             return;
 
@@ -94,10 +87,12 @@ public class StatisticsService {
             } else
                 localyticsSession.tagEvent(event);
         }
+*/
     }
 
     public static boolean dontCollectStatistics() {
-        return !Preferences.getBoolean(R.string.p_statistics, true);
+        return true;
+//        return !Preferences.getBoolean(R.string.p_statistics, true);
     }
 
 }
