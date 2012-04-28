@@ -44,7 +44,6 @@ import com.todoroo.andlib.utility.Preferences;
 import com.todoroo.astrid.data.Task;
 import com.todoroo.astrid.helper.AmazonRequestsHelper;
 import com.todoroo.astrid.helper.AsyncImageView;
-import com.todoroo.astrid.producteev.api.StringEscapeUtils;
 import com.todoroo.astrid.service.StatisticsConstants;
 import com.todoroo.astrid.service.StatisticsService;
 import com.todoroo.astrid.taskrabbit.TaskRabbitControlSet;
@@ -431,7 +430,8 @@ public class WebServicesView extends LinearLayout {
 
                 for(int i = 0; i < results.length(); i++) {
                     JSONObject result = results.getJSONObject(i);
-                    String title = StringEscapeUtils.unescapeHtml(result.getString("titleNoFormatting"));
+                    //String title = StringEscapeUtils.unescapeHtml(result.getString("titleNoFormatting"));
+                    String title = result.getString("titleNoFormatting");
                     inflateRow(body, null, title,
                             result.getString("visibleUrl"),
                             new LinkTag(result.getString("url"),

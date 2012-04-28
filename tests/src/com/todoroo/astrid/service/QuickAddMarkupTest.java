@@ -6,14 +6,13 @@ import java.util.List;
 
 import com.todoroo.andlib.test.TodorooTestCase;
 import com.todoroo.astrid.data.Task;
-import com.todoroo.astrid.producteev.ProducteevUtilities;
 
 public class QuickAddMarkupTest extends TodorooTestCase {
 
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        ProducteevUtilities.INSTANCE.setToken(null);
+//        ProducteevUtilities.INSTANCE.setToken(null);
     }
 
     public void testTags() {

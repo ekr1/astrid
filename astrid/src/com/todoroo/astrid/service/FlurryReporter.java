@@ -10,7 +10,6 @@ import java.io.StringWriter;
 import android.database.sqlite.SQLiteException;
 
 import com.todoroo.andlib.service.ExceptionService.ErrorReporter;
-import com.todoroo.astrid.producteev.api.ProducteevRestClient;
 
 public class FlurryReporter implements ErrorReporter {
 
@@ -31,7 +30,7 @@ public class FlurryReporter implements ErrorReporter {
 
         // shorten the string
         trace = trace.substring(message.length());
-        trace = trace.replaceAll(ProducteevRestClient.class.getName(), "!pdvRest");
+//        trace = trace.replaceAll(ProducteevRestClient.class.getName(), "!pdvRest");
         trace = trace.replaceAll("com.todoroo.bente", "!ctb");
         trace = trace.replaceAll("com.todoroo.astrid", "!cta");
         trace = trace.replaceAll("com.todoroo.android", "!ctc");

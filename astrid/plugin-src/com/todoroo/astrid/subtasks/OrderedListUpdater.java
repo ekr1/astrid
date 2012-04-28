@@ -13,7 +13,6 @@ import com.todoroo.astrid.api.Filter;
 import com.todoroo.astrid.core.PluginServices;
 import com.todoroo.astrid.data.Metadata;
 import com.todoroo.astrid.data.Task;
-import com.todoroo.astrid.subtasks.OrderedListUpdater.OrderedListIterator;
 
 abstract public class OrderedListUpdater<LIST> {
 
