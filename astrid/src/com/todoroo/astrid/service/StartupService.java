@@ -19,7 +19,6 @@ import android.media.AudioManager;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.crittercism.app.Crittercism;
 import com.timsu.astrid.R;
 import com.todoroo.andlib.service.Autowired;
 import com.todoroo.andlib.service.ContextManager;
@@ -102,11 +101,11 @@ public class StartupService {
         // sets up context manager
         ContextManager.setContext(context);
 
-        if(!StatisticsService.dontCollectStatistics()) {
-            Crittercism.init(context.getApplicationContext(), Constants.CRITTERCISM_APP_ID);
-            Crittercism.setShouldUseAmazonMarket(Constants.MARKET_STRATEGY.getClass() ==
-                MarketStrategy.AmazonMarketStrategy.class);
-        }
+//        if(!StatisticsService.dontCollectStatistics()) {
+//            Crittercism.init(context.getApplicationContext(), Constants.CRITTERCISM_APP_ID);
+//            Crittercism.setShouldUseAmazonMarket(Constants.MARKET_STRATEGY.getClass() ==
+//                MarketStrategy.AmazonMarketStrategy.class);
+//        }
 
         try {
             database.openForWriting();
