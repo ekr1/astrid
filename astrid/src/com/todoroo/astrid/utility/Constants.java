@@ -10,7 +10,7 @@ public final class Constants {
     /**
      * LCL API Key
      */
-    public static final String LOCALYTICS_KEY = "ae35a010c66a997ab129ab7-3e2adf46-8bb3-11e0-fe8b-007f58cb3154";
+//    public static final String LOCALYTICS_KEY = "ae35a010c66a997ab129ab7-3e2adf46-8bb3-11e0-fe8b-007f58cb3154";
 
     /**
      * Application Package
@@ -41,7 +41,7 @@ public final class Constants {
     /**
      * Astrid Help URL
      */
-    public static final String HELP_URL = "http://weloveastrid.com/help-user-guide-astrid-v3/active-tasks/";
+//    public static final String HELP_URL = "http://weloveastrid.com/help-user-guide-astrid-v3/active-tasks/";
 
     // --- task list activity source strings
 
@@ -67,18 +67,18 @@ public final class Constants {
 //    public static final int NOTIFICATION_PRODUCTEEV_NOTIFICATIONS = -4;
 
     /** Notification Manager id for astrid.com */
-    public static final int NOTIFICATION_ACTFM = -5;
+//    public static final int NOTIFICATION_ACTFM = -5;
 
     // --- crittercism
 
-    public static final String CRITTERCISM_APP_ID = "4e8a796fddf5203b6f0097c5";
+//    public static final String CRITTERCISM_APP_ID = "4e8a796fddf5203b6f0097c5";
 
     // --- amazon
 
-    public static final String AWS_ACCESS_KEY_ID = "AKIAJTVL4FOF4PRBKBNA";
+//    public static final String AWS_ACCESS_KEY_ID = "AKIAJTVL4FOF4PRBKBNA";
 
-    public static final String AWS_SECRET_KEY_ID = "";
+//    public static final String AWS_SECRET_KEY_ID = "";
 
-    public static final String AWS_ENDPOINT = "ecs.amazonaws.com";
+//    public static final String AWS_ENDPOINT = "ecs.amazonaws.com";
 
 }
