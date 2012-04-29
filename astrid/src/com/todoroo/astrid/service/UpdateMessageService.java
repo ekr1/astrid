@@ -43,7 +43,7 @@ public class UpdateMessageService {
 
 //    private static final String PLUGIN_PDV = "pdv";
 //    private static final String PLUGIN_GTASKS = "gtasks";
-    private static final String PLUGIN_RMILK = "rmilk";
+//    private static final String PLUGIN_RMILK = "rmilk";
 
     @Autowired protected RestClient restClient;
 //    @Autowired private GtasksPreferenceService gtasksPreferenceService;
