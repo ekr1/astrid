@@ -5,7 +5,6 @@ import java.io.IOException;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.json.JSONArray;
-import org.weloveastrid.rmilk.MilkUtilities;
 
 import com.todoroo.andlib.service.Autowired;
 import com.todoroo.andlib.service.RestClient;
@@ -142,46 +141,46 @@ public class UpdateMessageServiceTest extends DatabaseTestCase {
         }.processUpdates(getContext());
     }
 
-    public void testUpdateWithInternalPluginOn() {
-        clearLatestUpdates();
-        MilkUtilities.INSTANCE.setToken("milk");
+//    public void testUpdateWithInternalPluginOn() {
+//        clearLatestUpdates();
+//        MilkUtilities.INSTANCE.setToken("milk");
+//
+//        new TestUpdateMessageService() {
+//
+//            @Override
+//            void verifyMessage(String message) {
+//                assertTrue(message.contains("rmilk man"));
+//            }
+//
+//            @Override
+//            String getUpdates(String url) throws IOException {
+//                return "[{message:'rmilk man',plugin:'rmilk'}]";
+//            }
+//        }.processUpdates(getContext());
+//    }
 
-        new TestUpdateMessageService() {
-
-            @Override
-            void verifyMessage(String message) {
-                assertTrue(message.contains("rmilk man"));
-            }
-
-            @Override
-            String getUpdates(String url) throws IOException {
-                return "[{message:'rmilk man',plugin:'rmilk'}]";
-            }
-        }.processUpdates(getContext());
-    }
-
-    public void testUpdateWithInternalPluginOff() {
-        clearLatestUpdates();
-        MilkUtilities.INSTANCE.setToken(null);
-
-        new TestUpdateMessageService() {
-
-            @Override
-            void verifyMessage(String message) {
-                fail("displayed update");
-            }
-
-            @Override
-            protected void onEmptyMessage() {
-                // expected
-            }
-
-            @Override
-            String getUpdates(String url) throws IOException {
-                return "[{message:'rmilk man',plugin:'rmilk'}]";
-            }
-        }.processUpdates(getContext());
-    }
+//    public void testUpdateWithInternalPluginOff() {
+//        clearLatestUpdates();
+//        MilkUtilities.INSTANCE.setToken(null);
+//
+//        new TestUpdateMessageService() {
+//
+//            @Override
+//            void verifyMessage(String message) {
+//                fail("displayed update");
+//            }
+//
+//            @Override
+//            protected void onEmptyMessage() {
+//                // expected
+//            }
+//
+//            @Override
+//            String getUpdates(String url) throws IOException {
+//                return "[{message:'rmilk man',plugin:'rmilk'}]";
+//            }
+//        }.processUpdates(getContext());
+//    }
 
     public void testUpdateWithExternalPluginOn() {
         clearLatestUpdates();

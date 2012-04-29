@@ -6,7 +6,6 @@ import java.util.Locale;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.weloveastrid.rmilk.MilkUtilities;
 
 import android.app.Activity;
 import android.content.Context;
@@ -157,9 +156,9 @@ public class UpdateMessageService {
         if(PLUGIN_GTASKS.equals(plugin)) {
             return gtasksPreferenceService.isLoggedIn();
         }
-        else if(PLUGIN_RMILK.equals(plugin)) {
-            return MilkUtilities.INSTANCE.isLoggedIn();
-        }
+//        else if(PLUGIN_RMILK.equals(plugin)) {
+//            return MilkUtilities.INSTANCE.isLoggedIn();
+//        }
         else
             return addOnService.isInstalled(plugin);
     }
