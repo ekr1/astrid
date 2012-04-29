@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 
-import org.weloveastrid.rmilk.data.MilkNoteHelper;
-
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -610,7 +608,8 @@ public final class UpgradeService {
                 body = metadata.getValue(RTM_NOTE_TEXT);
                 title = metadata.getValue(RTM_NOTE_TITLE);
                 created = metadata.getValue(RTM_NOTE_CREATED);
-                provider = MilkNoteHelper.PROVIDER;
+//                provider = MilkNoteHelper.PROVIDER;
+                provider=null;
             } else {
                 id = metadata.getValue(PDV_NOTE_ID);
                 body = metadata.getValue(PDV_NOTE_MESSAGE);

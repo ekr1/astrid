@@ -8,9 +8,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map.Entry;
 
-import org.weloveastrid.rmilk.MilkPreferences;
-import org.weloveastrid.rmilk.MilkUtilities;
-
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
@@ -191,9 +188,9 @@ public class EditPreferences extends TodorooPreferenceActivity {
             intent.setClassName(resolveInfo.activityInfo.packageName,
                     resolveInfo.activityInfo.name);
 
-            if(MilkPreferences.class.getName().equals(resolveInfo.activityInfo.name) &&
-                    !MilkUtilities.INSTANCE.isLoggedIn())
-                continue;
+//            if(MilkPreferences.class.getName().equals(resolveInfo.activityInfo.name) &&
+//                    !MilkUtilities.INSTANCE.isLoggedIn())
+//                continue;
 
             Preference preference = new Preference(this);
             preference.setTitle(resolveInfo.activityInfo.loadLabel(pm));

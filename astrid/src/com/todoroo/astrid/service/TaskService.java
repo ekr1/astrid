@@ -3,8 +3,6 @@ package com.todoroo.astrid.service;
 import java.util.ArrayList;
 import java.util.Map.Entry;
 
-import org.weloveastrid.rmilk.data.MilkTaskFields;
-
 import android.content.ContentValues;
 
 import com.todoroo.andlib.data.Property;
@@ -143,10 +141,10 @@ public class TaskService {
                         metadata.setValue(GtasksMetadata.ID, ""); //$NON-NLS-1$
 //                    if(ProducteevTask.METADATA_KEY.equals(metadata.getValue(Metadata.KEY)))
 //                        metadata.setValue(ProducteevTask.ID, 0L);
-                    if(MilkTaskFields.METADATA_KEY.equals(metadata.getValue(Metadata.KEY))) {
-                        metadata.setValue(MilkTaskFields.TASK_ID, 0L);
-                        metadata.setValue(MilkTaskFields.TASK_SERIES_ID, 0L);
-                    }
+//                    if(MilkTaskFields.METADATA_KEY.equals(metadata.getValue(Metadata.KEY))) {
+//                        metadata.setValue(MilkTaskFields.TASK_ID, 0L);
+//                        metadata.setValue(MilkTaskFields.TASK_SERIES_ID, 0L);
+//                    }
                     if(OpencrxCoreUtils.OPENCRX_ACTIVITY_METADATA_KEY.equals(metadata.getValue(Metadata.KEY)))
                         metadata.setValue(OpencrxCoreUtils.ACTIVITY_ID, 0L);
 
