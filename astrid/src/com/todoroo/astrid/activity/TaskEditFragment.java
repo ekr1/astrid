@@ -97,7 +97,6 @@ import com.todoroo.astrid.ui.NestableScrollView;
 import com.todoroo.astrid.ui.NestableViewPager;
 import com.todoroo.astrid.ui.ReminderControlSet;
 import com.todoroo.astrid.ui.TaskEditMoreControls;
-import com.todoroo.astrid.ui.WebServicesView;
 import com.todoroo.astrid.utility.Flags;
 import com.todoroo.astrid.voice.VoiceInputAssistant;
 import com.viewpagerindicator.TabPageIndicator;
@@ -244,7 +243,7 @@ ViewPager.OnPageChangeListener, EditNoteActivity.UpdatesChangedListener {
     private long remoteId = 0;
 
 
-    private WebServicesView webServices = null;
+//    private WebServicesView webServices = null;
 
     public static final int TAB_STYLE_NONE = 0;
     public static final int TAB_STYLE_ACTIVITY = 1;
@@ -390,18 +389,18 @@ ViewPager.OnPageChangeListener, EditNoteActivity.UpdatesChangedListener {
         Handler refreshHandler = new Handler();
         refreshHandler.postDelayed(refreshActivity, 1000);
 
-        if(hasTitle) {
-            if(webServices == null) {
-                webServices = new WebServicesView(getActivity());
-                webServices.setLayoutParams(new FrameLayout.LayoutParams(LayoutParams.FILL_PARENT,
-                        LayoutParams.WRAP_CONTENT));
-                webServices.setPadding(10, 5, 10, 10);
-                webServices.taskRabbitControl = taskRabbitControl;
-                webServices.setTask(model);
-            } else {
-                webServices.refresh();
-            }
-        }
+//        if(hasTitle) {
+//            if(webServices == null) {
+//                webServices = new WebServicesView(getActivity());
+//                webServices.setLayoutParams(new FrameLayout.LayoutParams(LayoutParams.FILL_PARENT,
+//                        LayoutParams.WRAP_CONTENT));
+//                webServices.setPadding(10, 5, 10, 10);
+//                webServices.taskRabbitControl = taskRabbitControl;
+//                webServices.setTask(model);
+//            } else {
+//                webServices.refresh();
+//            }
+//        }
 
 
         mAdapter = new TaskEditViewPager(getActivity(), tabStyle);
@@ -772,10 +771,10 @@ ViewPager.OnPageChangeListener, EditNoteActivity.UpdatesChangedListener {
         model = null;
         remoteId = 0;
         populateFields(intent);
-        if (webServices != null) {
-            webServices.setTask(model);
-            webServices.reset();
-        }
+//        if (webServices != null) {
+//            webServices.setTask(model);
+//            webServices.reset();
+//        }
     }
 
     /** Populate UI component values from the model */
@@ -1142,8 +1141,8 @@ ViewPager.OnPageChangeListener, EditNoteActivity.UpdatesChangedListener {
             return moreControls;
         case TAB_VIEW_UPDATES:
             return editNotes;
-        case TAB_VIEW_WEB_SERVICES:
-            return webServices;
+//        case TAB_VIEW_WEB_SERVICES:
+//            return webServices;
         }
 
         return null;
@@ -1160,8 +1159,8 @@ ViewPager.OnPageChangeListener, EditNoteActivity.UpdatesChangedListener {
         case TAB_VIEW_UPDATES:
             view = editNotes;
             break;
-        case TAB_VIEW_WEB_SERVICES:
-            view = webServices;
+//        case TAB_VIEW_WEB_SERVICES:
+//            view = webServices;
         }
 
         if (view == null || mPager == null) return;
@@ -1214,23 +1213,23 @@ ViewPager.OnPageChangeListener, EditNoteActivity.UpdatesChangedListener {
                 setPagerHeightForPosition(position);
 
                 NestableScrollView scrollView = (NestableScrollView)getView().findViewById(R.id.edit_scroll);
-                if((tabStyle == TAB_STYLE_WEB && position == 1) ||
-                        (tabStyle == TAB_STYLE_ACTIVITY_WEB && position == 2))
-                    scrollView.
-                    setScrollabelViews(webServices.getScrollableViews());
-                else
+//                if((tabStyle == TAB_STYLE_WEB && position == 1) ||
+//                        (tabStyle == TAB_STYLE_ACTIVITY_WEB && position == 2))
+//                    scrollView.
+//                    setScrollabelViews(webServices.getScrollableViews());
+//                else
                     scrollView.setScrollabelViews(null);
             }
         };
 
-        if(getTabForPosition(position) == TAB_VIEW_WEB_SERVICES)
-            webServices.onPageSelected(new Runnable() {
-                @Override
-                public void run() {
-                    onPageSelected.run();
-                }
-            });
-        else
+//        if(getTabForPosition(position) == TAB_VIEW_WEB_SERVICES)
+//            webServices.onPageSelected(new Runnable() {
+//                @Override
+//                public void run() {
+//                    onPageSelected.run();
+//                }
+//            });
+//        else
             onPageSelected.run();
     }
 
