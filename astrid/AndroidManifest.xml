@@ -317,16 +317,6 @@
     <activity android:name="com.todoroo.astrid.actfm.ActFmLoginActivity"
               android:configChanges="keyboardHidden"/>
     <activity android:name="com.todoroo.astrid.taskrabbit.TaskRabbitOAuthLoginActivity" />
-    <activity android:name="com.todoroo.astrid.actfm.ActFmPreferences"
-              android:theme="@android:style/Theme"
-              android:label="@string/actfm_APr_header">
-      <meta-data android:name="category"
-                 android:resource="@string/SyP_label" />
-      <intent-filter>   
-        <action android:name="com.todoroo.astrid.SETTINGS" />
-        <category android:name="android.intent.category.DEFAULT" />
-      </intent-filter>
-    </activity>
     <activity android:name="com.todoroo.astrid.actfm.ActFmGoogleAuthActivity" 
               android:theme="@style/Theme" android:configChanges="orientation|keyboardHidden"/>
     <service android:name="com.todoroo.astrid.actfm.ActFmBackgroundService">
@@ -469,49 +459,6 @@
     </activity>
     <service android:name="com.todoroo.astrid.reminders.ReminderSchedulingService"/>
               
-    <!-- rmilk -->
-    <receiver android:name="org.weloveastrid.rmilk.MilkFilterExposer">
-      <intent-filter>
-        <action android:name="com.todoroo.astrid.REQUEST_FILTERS" />
-        <category android:name="android.intent.category.DEFAULT" />
-      </intent-filter>
-    </receiver>
-    <receiver android:name="org.weloveastrid.rmilk.MilkDetailExposer">
-      <intent-filter>
-        <action android:name="com.todoroo.astrid.REQUEST_DETAILS" />
-        <category android:name="android.intent.category.DEFAULT" />
-      </intent-filter>
-    </receiver>
-    <activity android:name="org.weloveastrid.rmilk.MilkLoginActivity" />
-    <activity android:name="org.weloveastrid.rmilk.MilkPreferences"
-              android:theme="@android:style/Theme"
-              android:icon="@drawable/icon"
-              android:label="@string/rmilk_MPr_header">
-      <meta-data android:name="category"
-                 android:resource="@string/SyP_label" />
-      <intent-filter>   
-        <action android:name="com.todoroo.astrid.SETTINGS" />
-        <category android:name="android.intent.category.DEFAULT" />
-      </intent-filter>
-    </activity>
-    <service android:name="org.weloveastrid.rmilk.MilkBackgroundService"/>
-    <receiver android:name="org.weloveastrid.rmilk.MilkStartupReceiver">
-      <intent-filter>
-        <action android:name="android.intent.action.BOOT_COMPLETED" />
-        <category android:name="android.intent.category.DEFAULT" />
-      </intent-filter>
-      <intent-filter>
-        <action android:name="com.todoroo.astrid.STARTUP" />
-        <category android:name="android.intent.category.DEFAULT" />
-      </intent-filter>
-    </receiver>
-    <receiver android:name="org.weloveastrid.rmilk.MilkSyncActionExposer">
-      <intent-filter>
-        <action android:name="com.todoroo.astrid.REQUEST_SYNC_ACTIONS" />
-        <category android:name="android.intent.category.DEFAULT" />
-      </intent-filter>
-    </receiver>    
-
     <!-- other task actions -->
     <receiver android:name="com.todoroo.astrid.core.LinkActionExposer">
       <intent-filter>
