@@ -625,7 +625,7 @@ public class TaskListFragment extends ListFragment implements OnScrollListener,
         return false;
     }
 
-    /*
+/*
     public final void initiateAutomaticSync() {
         final AstridActivity activity = (AstridActivity) getActivity();
         if (activity == null)
@@ -649,11 +649,12 @@ public class TaskListFragment extends ListFragment implements OnScrollListener,
             }.start();
         }
     }
-
+*/
     /**
      * Implementation of initiation automatic sync. Subclasses should override this method;
      * the above method takes care of calling it in the correct way
      */
+/*
     protected void initiateAutomaticSyncImpl() {
         if (isCurrentTaskListFragment())
             syncActionHelper.initiateAutomaticSync(filter);

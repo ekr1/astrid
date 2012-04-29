@@ -46,18 +46,14 @@ import com.todoroo.andlib.data.TodorooCursor;
 import com.todoroo.andlib.service.Autowired;
 import com.todoroo.andlib.service.DependencyInjectionService;
 import com.todoroo.andlib.service.ExceptionService;
-import com.todoroo.andlib.sql.Order;
-import com.todoroo.andlib.sql.Query;
 import com.todoroo.andlib.utility.DialogUtilities;
 import com.todoroo.andlib.utility.Preferences;
 import com.todoroo.astrid.actfm.sync.ActFmPreferenceService;
-import com.todoroo.astrid.actfm.sync.ActFmSyncService;
 import com.todoroo.astrid.activity.TaskEditFragment;
 import com.todoroo.astrid.dao.UserDao;
 import com.todoroo.astrid.data.Metadata;
 import com.todoroo.astrid.data.TagData;
 import com.todoroo.astrid.data.Task;
-import com.todoroo.astrid.data.User;
 import com.todoroo.astrid.helper.AsyncImageView;
 import com.todoroo.astrid.service.AstridDependencyInjector;
 import com.todoroo.astrid.service.MetadataService;
@@ -358,7 +354,7 @@ public class EditPeopleControlSet extends PopupControlSet {
 
         ArrayList<AssignedToUser> coreUsers = new ArrayList<AssignedToUser>();
         ArrayList<AssignedToUser> listUsers = new ArrayList<AssignedToUser>();
-        ArrayList<AssignedToUser> astridUsers = new ArrayList<AssignedToUser>();
+//        ArrayList<AssignedToUser> astridUsers = new ArrayList<AssignedToUser>();
 
         int assignedIndex = 0;
         try {
@@ -383,12 +379,12 @@ public class EditPeopleControlSet extends PopupControlSet {
                 coreUsersJson.add(0, user);
             }
 
-            ArrayList<JSONObject> astridFriends = getAstridFriends();
+//            ArrayList<JSONObject> astridFriends = getAstridFriends();
 
             // de-duplicate by user id and/or email
             coreUsers = convertJsonUsersToAssignedUsers(coreUsersJson, userIds, emails, names);
             listUsers = convertJsonUsersToAssignedUsers(sharedPeople, userIds, emails, names);
-            astridUsers = convertJsonUsersToAssignedUsers(astridFriends, userIds, emails, names);
+//            astridUsers = convertJsonUsersToAssignedUsers(astridFriends, userIds, emails, names);
 
             contactPickerUser = new AssignedToUser(activity.getString(R.string.actfm_EPA_choose_contact),
                     new JSONObject().put("default_picture", R.drawable.icn_friends)
@@ -412,7 +408,7 @@ public class EditPeopleControlSet extends PopupControlSet {
             }
 
             if (assignedIndex == 0) {
-                assignedIndex = findAssignedIndex(t, coreUsers, listUsers, astridUsers);
+                assignedIndex = findAssignedIndex(t, coreUsers, listUsers);
             }
 
         } catch (JSONException e) {
@@ -425,7 +421,7 @@ public class EditPeopleControlSet extends PopupControlSet {
         AssignedUserAdapter coreUserAdapter = new AssignedUserAdapter(activity, coreUsers, 0);
         AssignedUserAdapter listUserAdapter = new AssignedUserAdapter(activity, listUsers, coreUserAdapter.getCount() + 1);
         int offsetForAstridUsers = listUserAdapter.getCount() > 0 ? 2 : 1;
-        AssignedUserAdapter astridUserAdapter = new AssignedUserAdapter(activity, astridUsers, coreUserAdapter.getCount() + listUserAdapter.getCount() + offsetForAstridUsers);
+//        AssignedUserAdapter astridUserAdapter = new AssignedUserAdapter(activity, astridUsers, coreUserAdapter.getCount() + listUserAdapter.getCount() + offsetForAstridUsers);
 
         LayoutInflater inflater = activity.getLayoutInflater();
         TextView header1 = (TextView) inflater.inflate(R.layout.list_header, null);
@@ -438,10 +434,12 @@ public class EditPeopleControlSet extends PopupControlSet {
             mergeAdapter.addView(header1);
             mergeAdapter.addAdapter(listUserAdapter);
         }
+/*
         if (astridUserAdapter.getCount() > 0) {
             mergeAdapter.addView(header2);
             mergeAdapter.addAdapter(astridUserAdapter);
         }
+*/
 
         activity.runOnUiThread(new Runnable() {
             @Override
@@ -524,6 +522,7 @@ public class EditPeopleControlSet extends PopupControlSet {
         return 0;
     }
 
+ /*
     private ArrayList<JSONObject> getAstridFriends() {
         ArrayList<JSONObject> astridFriends = new ArrayList<JSONObject>();
         TodorooCursor<User> users = userDao.query(Query.select(User.PROPERTIES).orderBy(Order.asc(User.NAME)));
@@ -544,7 +543,7 @@ public class EditPeopleControlSet extends PopupControlSet {
         }
         return astridFriends;
     }
-
+*/
 
 
     private class AssignedUserAdapter extends ArrayAdapter<AssignedToUser> {

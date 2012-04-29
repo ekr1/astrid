@@ -436,7 +436,7 @@ public class TaskListActivity extends AstridActivity implements MainMenuListener
 
             TaskListFragment fragment = getTaskListFragment();
             if (fragment != null) {
-                fragment.initiateAutomaticSync();
+//                fragment.initiateAutomaticSync();
                 fragment.requestCommentCountUpdate();
             }
         }

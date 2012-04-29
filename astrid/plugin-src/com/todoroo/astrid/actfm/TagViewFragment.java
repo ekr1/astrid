@@ -271,7 +271,7 @@ public class TagViewFragment extends TaskListFragment {
         }
     }
 
-    /** refresh the list with latest data from the web */
+    // refresh the list with latest data from the web
     private void refreshData(final boolean manual) {
         ((TextView)taskListView.findViewById(android.R.id.empty)).setText(R.string.DLG_loading);
 

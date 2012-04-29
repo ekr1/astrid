@@ -332,7 +332,7 @@ public class QuickAddBar extends LinearLayout {
                     ContextManager.getContext().getContentResolver(), new ContentValues());
             task.setValue(Task.CALENDAR_URI, calendarUri.toString());
             task.putTransitory(SyncFlags.ACTFM_SUPPRESS_SYNC, true);
-            task.putTransitory(SyncFlags.GTASKS_SUPPRESS_SYNC, true);
+//            task.putTransitory(SyncFlags.GTASKS_SUPPRESS_SYNC, true);
             taskService.save(task);
         }
     }
