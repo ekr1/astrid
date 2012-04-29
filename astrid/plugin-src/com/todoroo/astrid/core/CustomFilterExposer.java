@@ -39,7 +39,6 @@ import com.todoroo.astrid.data.Task;
 import com.todoroo.astrid.data.TaskApiDao.TaskCriteria;
 import com.todoroo.astrid.service.TagDataService;
 import com.todoroo.astrid.service.ThemeService;
-import com.todoroo.astrid.taskrabbit.TaskRabbitMetadata;
 
 /**
  * Exposes Astrid's built in filters to the {@link FilterListFragment}
@@ -137,8 +136,10 @@ public final class CustomFilterExposer extends BroadcastReceiver implements Astr
                 new QueryTemplate().join(Join.left(Metadata.TABLE, Task.ID.eq(Metadata.TASK)))
                     .where(Criterion.and(TaskCriteria.isActive(),
                         Criterion.or(Task.CREATOR_ID.eq(0), Task.CREATOR_ID.eq(ActFmPreferenceService.userId())),
-                        Criterion.or(Task.USER_ID.neq(0),
-                                    Criterion.and(Metadata.KEY.eq(TaskRabbitMetadata.METADATA_KEY), TaskRabbitMetadata.ID.gt(0))))),
+                        //Criterion.or(
+                                Task.USER_ID.neq(0))),
+                          //          Criterion.and(Metadata.KEY.eq(TaskRabbitMetadata.METADATA_KEY), TaskRabbitMetadata.ID.gt(0))))
+
                         null);
         f.listingIcon = ((BitmapDrawable)r.getDrawable(
                 ThemeService.getDrawable(R.drawable.filter_assigned, themeFlags))).getBitmap();

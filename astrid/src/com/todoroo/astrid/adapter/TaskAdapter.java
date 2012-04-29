@@ -29,7 +29,6 @@ import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -71,8 +70,6 @@ import com.todoroo.astrid.notes.NotesDecorationExposer;
 import com.todoroo.astrid.service.StatisticsConstants;
 import com.todoroo.astrid.service.StatisticsService;
 import com.todoroo.astrid.service.TaskService;
-import com.todoroo.astrid.taskrabbit.TaskRabbitDataService;
-import com.todoroo.astrid.taskrabbit.TaskRabbitTaskContainer;
 import com.todoroo.astrid.timers.TimerDecorationExposer;
 import com.todoroo.astrid.ui.CheckableImageView;
 import com.todoroo.astrid.utility.Constants;
@@ -412,9 +409,9 @@ public class TaskAdapter extends CursorAdapter implements Filterable {
         // image view
         final AsyncImageView pictureView = viewHolder.picture; {
             if (pictureView != null) {
-                TaskRabbitTaskContainer container = TaskRabbitDataService.getInstance().getContainerForTask(task);
+//                TaskRabbitTaskContainer container = TaskRabbitDataService.getInstance().getContainerForTask(task);
 
-                if(task.getValue(Task.USER_ID) == Task.USER_ID_SELF && !container.isTaskRabbit()) {
+                if(task.getValue(Task.USER_ID) == Task.USER_ID_SELF /*&& !container.isTaskRabbit() */) {
                     pictureView.setVisibility(View.GONE);
                     if (viewHolder.pictureBorder != null)
                         viewHolder.pictureBorder.setVisibility(View.GONE);
@@ -423,9 +420,9 @@ public class TaskAdapter extends CursorAdapter implements Filterable {
                     if (viewHolder.pictureBorder != null)
                         viewHolder.pictureBorder.setVisibility(View.VISIBLE);
                     pictureView.setUrl(null);
-                    if (container.isTaskRabbit()) {
+                    /*if (container.isTaskRabbit()) {
                         pictureView.setDefaultImageResource(R.drawable.task_rabbit_image);
-                    } else if(task.getValue(Task.USER_ID) == Task.USER_ID_UNASSIGNED)
+                    } else*/ if(task.getValue(Task.USER_ID) == Task.USER_ID_UNASSIGNED)
                         pictureView.setDefaultImageResource(R.drawable.icn_anyone_transparent);
                     else {
                         pictureView.setDefaultImageResource(R.drawable.icn_default_person_image);
@@ -433,7 +430,7 @@ public class TaskAdapter extends CursorAdapter implements Filterable {
                             JSONObject user = new JSONObject(task.getValue(Task.USER));
                             pictureView.setUrl(user.optString("picture")); //$NON-NLS-1$
                         } catch (JSONException e) {
-                            Log.w("astrid", "task-adapter-image", e); //$NON-NLS-1$ //$NON-NLS-2$
+                            //Log.w("astrid", "task-adapter-image", e); //$NON-NLS-1$ //$NON-NLS-2$
                         }
                     }
                 }

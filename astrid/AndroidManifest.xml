@@ -314,11 +314,6 @@
     </receiver>    
             
     <!-- actfm -->
-    <activity android:name="com.todoroo.astrid.actfm.ActFmLoginActivity"
-              android:configChanges="keyboardHidden"/>
-    <activity android:name="com.todoroo.astrid.taskrabbit.TaskRabbitOAuthLoginActivity" />
-    <activity android:name="com.todoroo.astrid.actfm.ActFmGoogleAuthActivity" 
-              android:theme="@style/Theme" android:configChanges="orientation|keyboardHidden"/>
     <service android:name="com.todoroo.astrid.actfm.ActFmBackgroundService">
       <intent-filter>
         <action android:name="com.todoroo.astrid.actfm.SYNC" />
@@ -467,13 +462,7 @@
       </intent-filter>
     </receiver>
     
-    <!-- Task Rabbit -->
-    <activity android:name="com.todoroo.astrid.taskrabbit.TaskRabbitControlSet"></activity>
-    <activity android:name="com.todoroo.astrid.taskrabbit.TaskRabbitMapActivity"></activity>
-    <activity android:name="com.todoroo.astrid.taskrabbit.TaskRabbitActivity"></activity><activity android:name="com.todoroo.astrid.welcome.tutorial.WelcomeWalkthrough"
-              android:windowSoftInputMode="stateHidden"
-              android:screenOrientation="portrait"></activity>
-    
+   
     <!-- Uses Library -->      
     <uses-library android:name="com.google.android.maps" android:required="false" />   
   
