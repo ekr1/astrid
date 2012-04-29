@@ -42,8 +42,8 @@ public class StatisticsConstants {
     public static final String TASK_COMPLETED_NOTIFICATION = "task-completed-notification";
     public static final String ACTFM_SYNC_FINISHED = "actfm-sync-finished";
     public static final String ACTFM_SYNC_ERROR = "actfm-sync-error";
-    public static final String GTASKS_SYNC_FINISHED = "gtasks-sync-finished";
-    public static final String GTASKS_SYNC_ERROR = "gtasks-sync-error";
+//    public static final String GTASKS_SYNC_FINISHED = "gtasks-sync-finished";
+//    public static final String GTASKS_SYNC_ERROR = "gtasks-sync-error";
     public static final String PDV_SYNC_FINISHED = "pdv-sync-finished";
     public static final String TASK_CREATED_TASKLIST = "task-created-tasklist";
     public static final String ACTFM_LOGIN_SHOW = "actfm-login-show";
@@ -56,7 +56,7 @@ public class StatisticsConstants {
     public static final String TASK_COMPLETED_API2 = "task-completed-api2";
     public static final String TIMER_START = "timer-start";
     public static final String TIMER_STOP = "timer-stop";
-    public static final String GTASKS_TASK_COMPLETED = "gtasks-task-completed";
+//    public static final String GTASKS_TASK_COMPLETED = "gtasks-task-completed";
     public static final String PDV_TASK_COMPLETED = "pdv-task-completed";
     public static final String CREATE_CALENDAR_EVENT = "create-calendar-event";
     public static final String REPEAT_TASK_CREATE = "repeat-task-create";

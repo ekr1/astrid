@@ -20,11 +20,6 @@ import com.todoroo.astrid.dao.TagDataDao;
 import com.todoroo.astrid.dao.TaskDao;
 import com.todoroo.astrid.dao.UpdateDao;
 import com.todoroo.astrid.dao.UserDao;
-import com.todoroo.astrid.gtasks.GtasksListService;
-import com.todoroo.astrid.gtasks.GtasksMetadataService;
-import com.todoroo.astrid.gtasks.GtasksPreferenceService;
-import com.todoroo.astrid.gtasks.GtasksTaskListUpdater;
-import com.todoroo.astrid.gtasks.sync.GtasksSyncService;
 import com.todoroo.astrid.service.abtesting.ABChooser;
 import com.todoroo.astrid.service.abtesting.ABTestEventReportingService;
 import com.todoroo.astrid.service.abtesting.ABTestInvoker;
@@ -94,11 +89,11 @@ public class AstridDependencyInjector extends AbstractDependencyInjector {
         injectables.put("actFmSyncService", ActFmSyncService.class);
 
         // com.todoroo.astrid.gtasks
-        injectables.put("gtasksPreferenceService", GtasksPreferenceService.class);
-        injectables.put("gtasksListService", GtasksListService.class);
-        injectables.put("gtasksMetadataService", GtasksMetadataService.class);
-        injectables.put("gtasksTaskListUpdater", GtasksTaskListUpdater.class);
-        injectables.put("gtasksSyncService", GtasksSyncService.class);
+//        injectables.put("gtasksPreferenceService", GtasksPreferenceService.class);
+//        injectables.put("gtasksListService", GtasksListService.class);
+//        injectables.put("gtasksMetadataService", GtasksMetadataService.class);
+//        injectables.put("gtasksTaskListUpdater", GtasksTaskListUpdater.class);
+//        injectables.put("gtasksSyncService", GtasksSyncService.class);
 
         // AB testing
         injectables.put("abChooser", ABChooser.class);
