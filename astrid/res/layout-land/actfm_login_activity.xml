@@ -51,65 +51,6 @@
                 android:layout_weight="1" />
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/LinearLayout1"
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="50"
-            android:gravity="center_vertical"
-            android:paddingTop="5dip" >
-
-            <Button
-                android:id="@+id/gg_login"
-                android:layout_width="match_parent"
-                android:layout_height="45dip"
-                android:layout_marginLeft="15dip"
-                android:layout_marginRight="15dip"
-                android:drawableLeft="@drawable/google"
-                android:paddingLeft="20dip"
-                android:paddingRight="20dip"
-                android:text="@string/actfm_ALA_gg_login"
-                android:textSize="12sp"
-                android:layout_gravity="center_horizontal" />
-
-            <com.facebook.android.LoginButton
-                android:id="@+id/fb_login"
-                android:layout_width="match_parent"
-                android:layout_height="45dip"
-                android:layout_marginLeft="15dip"
-                android:layout_marginRight="15dip"
-                android:drawableLeft="@drawable/facebook"
-                android:paddingLeft="20dip"
-                android:paddingRight="20dip"
-                android:text="@string/actfm_ALA_fb_login"
-                android:textSize="12sp"
-                android:layout_gravity="center_horizontal" />
-
-            <Button
-                android:id="@+id/pw_login"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:paddingLeft="17dip"
-                android:paddingRight="20dip"
-                android:layout_marginLeft="15dip"
-                android:layout_marginRight="15dip"
-                android:drawableLeft="@drawable/notif_astrid"
-                android:textSize="12sp"
-                android:text="@string/welcome_login_pw"
-                android:layout_gravity="center_horizontal" />
-
-            <TextView
-		          android:id="@+id/tos"
-		          android:layout_width="fill_parent"
-		          android:layout_height="35dip"
-		          android:layout_above="@id/gg_login"
-		          android:gravity="center"
-		          android:paddingLeft="20dip"
-		          android:paddingRight="20dip"
-		          android:textSize="12.5sp"
-		          android:textColor="#ffffff" /> 
-        </LinearLayout>
 
     </LinearLayout>
 
