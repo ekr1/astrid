@@ -20,7 +20,7 @@ public class TaskEditViewPager extends PagerAdapter implements TitleProvider {
             titles = new String[] {
                     context.getString(R.string.TEA_tab_activity),
                     context.getString(R.string.TEA_tab_more),
-                    context.getString(R.string.TEA_tab_web),
+                    //context.getString(R.string.TEA_tab_web),
             };
             break;
         case TaskEditFragment.TAB_STYLE_ACTIVITY:
@@ -32,7 +32,7 @@ public class TaskEditViewPager extends PagerAdapter implements TitleProvider {
         case TaskEditFragment.TAB_STYLE_WEB:
             titles = new String[] {
                     context.getString(R.string.TEA_tab_more),
-                    context.getString(R.string.TEA_tab_web),
+                    //context.getString(R.string.TEA_tab_web),
             };
             break;
         }
