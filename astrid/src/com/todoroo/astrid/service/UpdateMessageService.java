@@ -28,7 +28,6 @@ import com.todoroo.andlib.utility.DialogUtilities;
 import com.todoroo.astrid.dao.StoreObjectDao;
 import com.todoroo.astrid.dao.StoreObjectDao.StoreObjectCriteria;
 import com.todoroo.astrid.data.StoreObject;
-import com.todoroo.astrid.gtasks.GtasksPreferenceService;
 import com.todoroo.astrid.utility.Constants;
 
 /**
@@ -43,11 +42,11 @@ public class UpdateMessageService {
     private static final String URL = "http://www.weloveastrid.com/updates.php";
 
 //    private static final String PLUGIN_PDV = "pdv";
-    private static final String PLUGIN_GTASKS = "gtasks";
+//    private static final String PLUGIN_GTASKS = "gtasks";
     private static final String PLUGIN_RMILK = "rmilk";
 
     @Autowired protected RestClient restClient;
-    @Autowired private GtasksPreferenceService gtasksPreferenceService;
+//    @Autowired private GtasksPreferenceService gtasksPreferenceService;
     @Autowired private AddOnService addOnService;
     @Autowired private StoreObjectDao storeObjectDao;
 
@@ -153,13 +152,13 @@ public class UpdateMessageService {
 //            return ProducteevUtilities.INSTANCE.isLoggedIn();
 //        }
 //        else
-        if(PLUGIN_GTASKS.equals(plugin)) {
-            return gtasksPreferenceService.isLoggedIn();
-        }
+//        if(PLUGIN_GTASKS.equals(plugin)) {
+//            return gtasksPreferenceService.isLoggedIn();
+//        }
 //        else if(PLUGIN_RMILK.equals(plugin)) {
 //            return MilkUtilities.INSTANCE.isLoggedIn();
 //        }
-        else
+//        else
             return addOnService.isInstalled(plugin);
     }
 

@@ -34,8 +34,6 @@ import com.todoroo.astrid.backup.BackupConstants;
 import com.todoroo.astrid.backup.BackupService;
 import com.todoroo.astrid.backup.TasksXmlImporter;
 import com.todoroo.astrid.dao.Database;
-import com.todoroo.astrid.gtasks.GtasksPreferenceService;
-import com.todoroo.astrid.gtasks.sync.GtasksSyncService;
 import com.todoroo.astrid.opencrx.OpencrxCoreUtils;
 import com.todoroo.astrid.reminders.ReminderStartupReceiver;
 import com.todoroo.astrid.service.abtesting.ABChooser;
@@ -75,11 +73,11 @@ public class StartupService {
 
     @Autowired ActFmSyncService actFmSyncService;
 
-    @Autowired GtasksPreferenceService gtasksPreferenceService;
+//    @Autowired GtasksPreferenceService gtasksPreferenceService;
 
     @Autowired ActFmPreferenceService actFmPreferenceService;
 
-    @Autowired GtasksSyncService gtasksSyncService;
+//    @Autowired GtasksSyncService gtasksSyncService;
 
     @Autowired FeatureFlipper featureFlipper;
 
@@ -186,7 +184,7 @@ public class StartupService {
                 // if sync ongoing flag was set, clear it
 //                ProducteevUtilities.INSTANCE.stopOngoing();
 //                MilkUtilities.INSTANCE.stopOngoing();
-                gtasksPreferenceService.stopOngoing();
+//                gtasksPreferenceService.stopOngoing();
                 actFmPreferenceService.stopOngoing();
                 OpencrxCoreUtils.INSTANCE.stopOngoing();
 
@@ -195,7 +193,7 @@ public class StartupService {
                 BackupService.scheduleService(context);
                 actFmSyncService.initialize();
 
-                gtasksSyncService.initialize();
+//                gtasksSyncService.initialize();
 
                 // get and display update messages
                 if (finalLatestVersion != 0)

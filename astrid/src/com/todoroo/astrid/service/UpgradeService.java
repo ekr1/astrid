@@ -30,7 +30,6 @@ import com.todoroo.astrid.core.SortHelper;
 import com.todoroo.astrid.dao.Database;
 import com.todoroo.astrid.data.Metadata;
 import com.todoroo.astrid.data.Task;
-import com.todoroo.astrid.gtasks.GtasksPreferenceService;
 import com.todoroo.astrid.helper.DueDateTimeMigrator;
 import com.todoroo.astrid.notes.NoteMetadata;
 import com.todoroo.astrid.service.abtesting.ABChooser;
@@ -101,7 +100,7 @@ public final class UpgradeService {
 
     @Autowired MetadataService metadataService;
 
-    @Autowired GtasksPreferenceService gtasksPreferenceService;
+//    @Autowired GtasksPreferenceService gtasksPreferenceService;
 
     @Autowired ABChooser abChooser;
 
@@ -467,7 +466,7 @@ public final class UpgradeService {
                     "New style for \"Task Edit\" page!",
                     "Purge completed or deleted tasks from settings menu!",
             });
-            gtasksPreferenceService.setToken(null);
+//            gtasksPreferenceService.setToken(null);
         }
 
         // --- old messages
@@ -485,8 +484,8 @@ public final class UpgradeService {
                     "Fixed bug with custom filters & tasks being hidden.",
             });
             upgrade3To3_7();
-            if(gtasksPreferenceService.isLoggedIn())
-                taskService.clearDetails(Criterion.all);
+//            if(gtasksPreferenceService.isLoggedIn())
+//                taskService.clearDetails(Criterion.all);
             Preferences.setBoolean(Eula.PREFERENCE_EULA_ACCEPTED, true);
         }
         if(from >= V3_0_0 && from < V3_6_0) {

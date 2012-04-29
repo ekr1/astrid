@@ -37,7 +37,6 @@ import com.todoroo.astrid.data.Metadata;
 import com.todoroo.astrid.data.StoreObject;
 import com.todoroo.astrid.data.Task;
 import com.todoroo.astrid.data.TaskApiDao.TaskCriteria;
-import com.todoroo.astrid.gtasks.GtasksPreferenceService;
 import com.todoroo.astrid.service.TagDataService;
 import com.todoroo.astrid.service.ThemeService;
 import com.todoroo.astrid.taskrabbit.TaskRabbitMetadata;
@@ -54,7 +53,7 @@ public final class CustomFilterExposer extends BroadcastReceiver implements Astr
     private static final String TOKEN_FILTER_NAME = "name"; //$NON-NLS-1$
 
     @Autowired TagDataService tagDataService;
-    @Autowired GtasksPreferenceService gtasksPreferenceService;
+//    @Autowired GtasksPreferenceService gtasksPreferenceService;
 
     @Override
     public void onReceive(Context context, Intent intent) {

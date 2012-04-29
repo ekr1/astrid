@@ -26,7 +26,6 @@ import com.todoroo.astrid.data.Metadata;
 import com.todoroo.astrid.data.SyncFlags;
 import com.todoroo.astrid.data.Task;
 import com.todoroo.astrid.gcal.GCalHelper;
-import com.todoroo.astrid.gtasks.GtasksMetadata;
 import com.todoroo.astrid.opencrx.OpencrxCoreUtils;
 import com.todoroo.astrid.tags.TagService;
 import com.todoroo.astrid.utility.TitleParser;
@@ -128,7 +127,7 @@ public class TaskService {
             if(cursor.getCount() > 0) {
                 Metadata metadata = new Metadata();
                 newTask.putTransitory(SyncFlags.ACTFM_SUPPRESS_SYNC, true);
-                newTask.putTransitory(SyncFlags.GTASKS_SUPPRESS_SYNC, true);
+//                newTask.putTransitory(SyncFlags.GTASKS_SUPPRESS_SYNC, true);
                 taskDao.save(newTask);
                 long newId = newTask.getId();
                 for(cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
@@ -137,8 +136,8 @@ public class TaskService {
                     if(!metadata.containsNonNullValue(Metadata.KEY))
                         continue;
 
-                    if(GtasksMetadata.METADATA_KEY.equals(metadata.getValue(Metadata.KEY)))
-                        metadata.setValue(GtasksMetadata.ID, ""); //$NON-NLS-1$
+//                    if(GtasksMetadata.METADATA_KEY.equals(metadata.getValue(Metadata.KEY)))
+//                        metadata.setValue(GtasksMetadata.ID, ""); //$NON-NLS-1$
 //                    if(ProducteevTask.METADATA_KEY.equals(metadata.getValue(Metadata.KEY)))
 //                        metadata.setValue(ProducteevTask.ID, 0L);
 //                    if(MilkTaskFields.METADATA_KEY.equals(metadata.getValue(Metadata.KEY))) {

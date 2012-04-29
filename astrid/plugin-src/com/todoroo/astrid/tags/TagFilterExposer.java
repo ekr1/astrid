@@ -43,7 +43,6 @@ import com.todoroo.astrid.core.SortHelper;
 import com.todoroo.astrid.dao.TaskDao.TaskCriteria;
 import com.todoroo.astrid.data.Metadata;
 import com.todoroo.astrid.data.TagData;
-import com.todoroo.astrid.gtasks.GtasksPreferenceService;
 import com.todoroo.astrid.service.AstridDependencyInjector;
 import com.todoroo.astrid.service.TagDataService;
 import com.todoroo.astrid.service.ThemeService;
@@ -64,7 +63,7 @@ public class TagFilterExposer extends BroadcastReceiver implements AstridFilterE
     public static final String SHOW_ACTIVE_TASKS = "show_main_task_view"; //$NON-NLS-1$
 
     @Autowired TagDataService tagDataService;
-    @Autowired GtasksPreferenceService gtasksPreferenceService;
+//    @Autowired GtasksPreferenceService gtasksPreferenceService;
 
     /** Create filter from new tag object */
     @SuppressWarnings("nls")
@@ -174,8 +173,7 @@ public class TagFilterExposer extends BroadcastReceiver implements AstridFilterE
         int themeFlags = isTablet ? ThemeService.FLAG_FORCE_LIGHT : 0;
 
         // --- untagged
-        int untaggedLabel = gtasksPreferenceService.isLoggedIn() ?
-                R.string.tag_FEx_untagged_w_astrid : R.string.tag_FEx_untagged;
+        int untaggedLabel = R.string.tag_FEx_untagged;
         Filter untagged = new Filter(r.getString(untaggedLabel),
                 r.getString(R.string.tag_FEx_untagged),
                 TagService.untaggedTemplate(),
