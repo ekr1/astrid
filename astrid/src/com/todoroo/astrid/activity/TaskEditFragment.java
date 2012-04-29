@@ -23,7 +23,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -84,7 +83,6 @@ import com.todoroo.astrid.service.StatisticsService;
 import com.todoroo.astrid.service.TaskService;
 import com.todoroo.astrid.service.ThemeService;
 import com.todoroo.astrid.tags.TagsControlSet;
-import com.todoroo.astrid.taskrabbit.TaskRabbitControlSet;
 import com.todoroo.astrid.timers.TimerActionControlSet;
 import com.todoroo.astrid.timers.TimerControlSet;
 import com.todoroo.astrid.ui.DateChangedAlerts;
@@ -195,7 +193,7 @@ ViewPager.OnPageChangeListener, EditNoteActivity.UpdatesChangedListener {
     private ImageButton voiceAddNoteButton;
 
     private EditPeopleControlSet peopleControlSet = null;
-    private TaskRabbitControlSet taskRabbitControl = null;
+//    private TaskRabbitControlSet taskRabbitControl = null;
     private EditNotesControlSet notesControlSet = null;
     private HideUntilControlSet hideUntilControls = null;
     private TagsControlSet tagsControlSet = null;
@@ -473,11 +471,11 @@ ViewPager.OnPageChangeListener, EditNoteActivity.UpdatesChangedListener {
                 R.layout.control_set_assigned,
                 R.layout.control_set_default_display,
                 R.string.actfm_EPA_assign_label_long, REQUEST_LOG_IN);
-        if(Locale.getDefault().getCountry().equals("US")) { //$NON-NLS-1$
-            taskRabbitControl = new TaskRabbitControlSet(this, R.layout.control_set_default_display);
-            controls.add(taskRabbitControl);
-            peopleControlSet.addListener(taskRabbitControl);
-        }
+//        if(Locale.getDefault().getCountry().equals("US")) { //$NON-NLS-1$
+//            taskRabbitControl = new TaskRabbitControlSet(this, R.layout.control_set_default_display);
+//            controls.add(taskRabbitControl);
+//            peopleControlSet.addListener(taskRabbitControl);
+//        }
         controls.add(peopleControlSet);
         controlSetMap.put(getString(R.string.TEA_ctrl_who_pref),
                 peopleControlSet);
@@ -590,10 +588,10 @@ ViewPager.OnPageChangeListener, EditNoteActivity.UpdatesChangedListener {
             String item = itemOrder[i];
             if (item.equals(moreSectionTrigger)) {
                 section = moreControls;
-                if (taskRabbitControl != null) {
-                    taskRabbitControl.getDisplayView().setVisibility(View.GONE);
-                    section.addView(taskRabbitControl.getDisplayView());
-                }
+//                if (taskRabbitControl != null) {
+//                    taskRabbitControl.getDisplayView().setVisibility(View.GONE);
+//                    section.addView(taskRabbitControl.getDisplayView());
+//                }
 
             } else {
                 View control_set = null;
@@ -1054,9 +1052,12 @@ ViewPager.OnPageChangeListener, EditNoteActivity.UpdatesChangedListener {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+/*
         if (taskRabbitControl != null && taskRabbitControl.activityResult(requestCode, resultCode, data)) {
             return;
-        } else if (editNotes != null && editNotes.activityResult(requestCode, resultCode, data)) {
+        } else
+*/
+        if (editNotes != null && editNotes.activityResult(requestCode, resultCode, data)) {
             return;
         } else if (requestCode == REQUEST_VOICE_RECOG
                 && resultCode == Activity.RESULT_OK) {
