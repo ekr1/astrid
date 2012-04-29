@@ -49,7 +49,6 @@ import com.todoroo.astrid.actfm.ActFmCameraModule;
 import com.todoroo.astrid.actfm.ActFmCameraModule.CameraResultCallback;
 import com.todoroo.astrid.actfm.ActFmCameraModule.ClearImageCallback;
 import com.todoroo.astrid.actfm.sync.ActFmPreferenceService;
-import com.todoroo.astrid.actfm.sync.ActFmSyncService;
 import com.todoroo.astrid.adapter.UpdateAdapter;
 import com.todoroo.astrid.core.PluginServices;
 import com.todoroo.astrid.dao.MetadataDao.MetadataCriteria;
@@ -77,7 +76,7 @@ public class EditNoteActivity extends LinearLayout implements TimerActionListene
 
     private Task task;
 
-    @Autowired ActFmSyncService actFmSyncService;
+//    @Autowired ActFmSyncService actFmSyncService;
     @Autowired ActFmPreferenceService actFmPreferenceService;
     @Autowired MetadataService metadataService;
     @Autowired UpdateDao updateDao;
@@ -396,13 +395,13 @@ public class EditNoteActivity extends LinearLayout implements TimerActionListene
         }
 
 
-        actFmSyncService.fetchUpdatesForTask(task, manual, new Runnable() {
-            @Override
-            public void run() {
-                callback.incrementProgress(50);
-                callback.finished();
-            }
-        });
+//        actFmSyncService.fetchUpdatesForTask(task, manual, new Runnable() {
+//            @Override
+//            public void run() {
+//                callback.incrementProgress(50);
+//                callback.finished();
+//            }
+//        });
         callback.incrementProgress(50);
     }
 
@@ -443,13 +442,13 @@ public class EditNoteActivity extends LinearLayout implements TimerActionListene
 
         final long updateId = update.getId();
         final Bitmap tempPicture = usePicture ? pendingCommentPicture : null;
-        new Thread() {
-            @Override
-            public void run() {
-                actFmSyncService.pushUpdate(updateId, tempPicture);
-
-            }
-        }.start();
+//        new Thread() {
+//            @Override
+//            public void run() {
+//                actFmSyncService.pushUpdate(updateId, tempPicture);
+//
+//            }
+//        }.start();
         commentField.setText(""); //$NON-NLS-1$
 
         pendingCommentPicture = usePicture ? null : pendingCommentPicture;

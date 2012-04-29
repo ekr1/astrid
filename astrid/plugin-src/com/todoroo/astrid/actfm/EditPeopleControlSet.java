@@ -85,7 +85,7 @@ public class EditPeopleControlSet extends PopupControlSet {
 
     @Autowired ActFmPreferenceService actFmPreferenceService;
 
-    @Autowired ActFmSyncService actFmSyncService;
+//    @Autowired ActFmSyncService actFmSyncService;
 
     @Autowired TaskService taskService;
 

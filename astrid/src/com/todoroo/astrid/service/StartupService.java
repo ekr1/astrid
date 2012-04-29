@@ -29,7 +29,6 @@ import com.todoroo.andlib.utility.AndroidUtilities;
 import com.todoroo.andlib.utility.DateUtilities;
 import com.todoroo.andlib.utility.Preferences;
 import com.todoroo.astrid.actfm.sync.ActFmPreferenceService;
-import com.todoroo.astrid.actfm.sync.ActFmSyncService;
 import com.todoroo.astrid.backup.BackupConstants;
 import com.todoroo.astrid.backup.BackupService;
 import com.todoroo.astrid.backup.TasksXmlImporter;
@@ -71,7 +70,7 @@ public class StartupService {
 
     @Autowired Database database;
 
-    @Autowired ActFmSyncService actFmSyncService;
+//    @Autowired ActFmSyncService actFmSyncService;
 
 //    @Autowired GtasksPreferenceService gtasksPreferenceService;
 
@@ -198,7 +197,7 @@ public class StartupService {
                 // perform initialization
                 ReminderStartupReceiver.startReminderSchedulingService(context);
                 BackupService.scheduleService(context);
-                actFmSyncService.initialize();
+//                actFmSyncService.initialize();
 
 //                gtasksSyncService.initialize();
 
