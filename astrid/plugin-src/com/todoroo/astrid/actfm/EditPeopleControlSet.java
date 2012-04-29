@@ -44,7 +44,6 @@ import com.todoroo.andlib.service.DependencyInjectionService;
 import com.todoroo.andlib.service.ExceptionService;
 import com.todoroo.andlib.utility.DialogUtilities;
 import com.todoroo.astrid.actfm.sync.ActFmPreferenceService;
-import com.todoroo.astrid.actfm.sync.ActFmSyncService;
 import com.todoroo.astrid.data.Metadata;
 import com.todoroo.astrid.data.TagData;
 import com.todoroo.astrid.data.Task;
@@ -70,7 +69,7 @@ public class EditPeopleControlSet extends PopupControlSet {
 
     @Autowired ActFmPreferenceService actFmPreferenceService;
 
-    @Autowired ActFmSyncService actFmSyncService;
+//    @Autowired ActFmSyncService actFmSyncService;
 
     @Autowired TaskService taskService;
 

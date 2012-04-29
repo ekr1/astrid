@@ -37,7 +37,6 @@ import com.todoroo.andlib.utility.Preferences;
 import com.todoroo.astrid.actfm.ActFmCameraModule.CameraResultCallback;
 import com.todoroo.astrid.actfm.ActFmCameraModule.ClearImageCallback;
 import com.todoroo.astrid.actfm.sync.ActFmPreferenceService;
-import com.todoroo.astrid.actfm.sync.ActFmSyncService;
 import com.todoroo.astrid.activity.AstridActivity;
 import com.todoroo.astrid.activity.TaskListActivity;
 import com.todoroo.astrid.adapter.UpdateAdapter;
@@ -47,7 +46,6 @@ import com.todoroo.astrid.data.TagData;
 import com.todoroo.astrid.data.Update;
 import com.todoroo.astrid.helper.AsyncImageView;
 import com.todoroo.astrid.helper.ImageDiskCache;
-import com.todoroo.astrid.helper.ProgressBarSyncResultCallback;
 import com.todoroo.astrid.service.StatisticsConstants;
 import com.todoroo.astrid.service.StatisticsService;
 import com.todoroo.astrid.service.TagDataService;
@@ -76,7 +74,7 @@ public class TagUpdatesFragment extends ListFragment {
     @Autowired ActFmPreferenceService actFmPreferenceService;
     @Autowired TagDataService tagDataService;
     @Autowired UpdateDao updateDao;
-    @Autowired ActFmSyncService actFmSyncService;
+//    @Autowired ActFmSyncService actFmSyncService;
 
     public TagUpdatesFragment() {
         DependencyInjectionService.getInstance().inject(this);
@@ -185,7 +183,7 @@ public class TagUpdatesFragment extends ListFragment {
         });
 
         refreshUpdatesList();
-        refreshActivity(false); // start a pull in the background
+//        refreshActivity(false); // start a pull in the background
     }
 
     private void resetPictureButton() {
@@ -294,45 +292,46 @@ public class TagUpdatesFragment extends ListFragment {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // handle my own menus
-        switch (item.getItemId()) {
+//        switch (item.getItemId()) {
+//
+//        case MENU_REFRESH_ID: {
+//
+//            refreshActivity(true);
+//            return true;
+//        }
 
-        case MENU_REFRESH_ID: {
-
-            refreshActivity(true);
-            return true;
-        }
-
-        default: return false;
-        }
+//        default:
+            return false;
+//        }
     }
 
-    private void refreshActivity(boolean manual) {
-        if (actFmPreferenceService.isLoggedIn()) {
-            final ProgressBarSyncResultCallback callback = new ProgressBarSyncResultCallback(
-                    getActivity(), R.id.progressBar, new Runnable() {
-                        @Override
-                        public void run() {
-                            refreshUpdatesList();
-                        }
-                    });
-
-            callback.started();
-            callback.incrementMax(100);
-            Runnable doneRunnable = new Runnable() {
-                @Override
-                public void run() {
-                    callback.incrementProgress(50);
-                    callback.finished();
-                }
-            };
-            if (tagData != null) {
-                actFmSyncService.fetchUpdatesForTag(tagData, manual, doneRunnable);
-            } else {
-                actFmSyncService.fetchPersonalUpdates(manual, doneRunnable);
-            }
-            callback.incrementProgress(50);
-        }
-    }
+//    private void refreshActivity(boolean manual) {
+//        if (actFmPreferenceService.isLoggedIn()) {
+//            final ProgressBarSyncResultCallback callback = new ProgressBarSyncResultCallback(
+//                    getActivity(), R.id.progressBar, new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            refreshUpdatesList();
+//                        }
+//                    });
+//
+//            callback.started();
+//            callback.incrementMax(100);
+//            Runnable doneRunnable = new Runnable() {
+//                @Override
+//                public void run() {
+//                    callback.incrementProgress(50);
+//                    callback.finished();
+//                }
+//            };
+//            if (tagData != null) {
+//                actFmSyncService.fetchUpdatesForTag(tagData, manual, doneRunnable);
+//            } else {
+//                actFmSyncService.fetchPersonalUpdates(manual, doneRunnable);
+//            }
+//            callback.incrementProgress(50);
+//        }
+//    }
 
 
     private String getPictureHashForUpdate(Update u) {
@@ -366,12 +365,12 @@ public class TagUpdatesFragment extends ListFragment {
 
         final long updateId = update.getId();
         final Bitmap tempPicture = picture;
-        new Thread() {
-            @Override
-            public void run() {
-                actFmSyncService.pushUpdate(updateId, tempPicture);
-            }
-        }.start();
+//        new Thread() {
+//            @Override
+//            public void run() {
+//                actFmSyncService.pushUpdate(updateId, tempPicture);
+//            }
+//        }.start();
         addCommentField.setText(""); //$NON-NLS-1$
         picture = null;
 

@@ -1,7 +1,5 @@
 package com.todoroo.astrid.actfm;
 
-import java.io.IOException;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 
@@ -38,7 +36,6 @@ import com.todoroo.andlib.utility.DialogUtilities;
 import com.todoroo.andlib.utility.Preferences;
 import com.todoroo.astrid.actfm.ActFmCameraModule.CameraResultCallback;
 import com.todoroo.astrid.actfm.sync.ActFmPreferenceService;
-import com.todoroo.astrid.actfm.sync.ActFmSyncService;
 import com.todoroo.astrid.activity.FilterListFragment;
 import com.todoroo.astrid.activity.ShortcutActivity;
 import com.todoroo.astrid.api.AstridApiConstants;
@@ -75,7 +72,7 @@ public class TagSettingsActivity extends FragmentActivity {
 
     @Autowired TagDataService tagDataService;
 
-    @Autowired ActFmSyncService actFmSyncService;
+//    @Autowired ActFmSyncService actFmSyncService;
 
     @Autowired ActFmPreferenceService actFmPreferenceService;
 
@@ -331,20 +328,20 @@ public class TagSettingsActivity extends FragmentActivity {
                 }
             };
 
-            if(actFmPreferenceService.isLoggedIn()) {
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        actFmSyncService.pushTagDataOnSave(tagData, tagData.getMergedValues());
-                        if(setBitmap != null && tagData.getValue(TagData.REMOTE_ID) > 0)
-                            uploadTagPicture(setBitmap);
-
-                        runOnUiThread(loadTag);
-                    }
-                }).start();
-            } else {
+//            if(actFmPreferenceService.isLoggedIn()) {
+//                new Thread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        actFmSyncService.pushTagDataOnSave(tagData, tagData.getMergedValues());
+//                        if(setBitmap != null && tagData.getValue(TagData.REMOTE_ID) > 0)
+//                            uploadTagPicture(setBitmap);
+//
+//                        runOnUiThread(loadTag);
+//                    }
+//                }).start();
+//            } else {
                 loadTag.run();
-            }
+//            }
 
             return;
         } else {
@@ -426,25 +423,25 @@ public class TagSettingsActivity extends FragmentActivity {
         tagMembers.addPerson("", ""); //$NON-NLS-1$
     }
 
-    private void uploadTagPicture(final Bitmap bitmap) {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    String url = actFmSyncService.setTagPicture(tagData.getValue(TagData.REMOTE_ID), bitmap);
-                    if (TextUtils.isEmpty(url)) return;
-                    if (imageCache.contains(tagData.getValue(TagData.PICTURE))) {
-                        imageCache.move(tagData.getValue(TagData.PICTURE), url);
-                    }
-                    tagData.setValue(TagData.PICTURE, url);
-                    tagData.putTransitory(SyncFlags.ACTFM_SUPPRESS_SYNC, true);
-                    tagDataService.save(tagData);
-                } catch (IOException e) {
-                    DialogUtilities.okDialog(TagSettingsActivity.this, e.toString(), null);
-                }
-            }
-        }).start();
-    }
+//    private void uploadTagPicture(final Bitmap bitmap) {
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                try {
+//                    String url = actFmSyncService.setTagPicture(tagData.getValue(TagData.REMOTE_ID), bitmap);
+//                    if (TextUtils.isEmpty(url)) return;
+//                    if (imageCache.contains(tagData.getValue(TagData.PICTURE))) {
+//                        imageCache.move(tagData.getValue(TagData.PICTURE), url);
+//                    }
+//                    tagData.setValue(TagData.PICTURE, url);
+//                    tagData.putTransitory(SyncFlags.ACTFM_SUPPRESS_SYNC, true);
+//                    tagDataService.save(tagData);
+//                } catch (IOException e) {
+//                    DialogUtilities.okDialog(TagSettingsActivity.this, e.toString(), null);
+//                }
+//            }
+//        }).start();
+//    }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
@@ -462,8 +459,8 @@ public class TagSettingsActivity extends FragmentActivity {
             public void handleCameraResult(Bitmap bitmap) {
                 picture.setImageBitmap(bitmap);
                 setBitmap = bitmap;
-                if(tagData.getValue(TagData.REMOTE_ID) > 0)
-                    uploadTagPicture(bitmap);
+//                if(tagData.getValue(TagData.REMOTE_ID) > 0)
+//                    uploadTagPicture(bitmap);
                 saveTagPictureLocally(bitmap);
             }
         };

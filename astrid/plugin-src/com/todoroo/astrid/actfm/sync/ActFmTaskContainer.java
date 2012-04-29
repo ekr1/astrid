@@ -37,8 +37,8 @@ public class ActFmTaskContainer extends SyncContainer {
         Metadata metadata = new Metadata();
         metadata.setValue(Metadata.KEY, NoteMetadata.METADATA_KEY);
         metadata.setValue(NoteMetadata.EXT_ID, comment.optString("id"));
-        metadata.setValue(NoteMetadata.EXT_PROVIDER,
-                ActFmDataService.NOTE_PROVIDER);
+//        metadata.setValue(NoteMetadata.EXT_PROVIDER,
+//                ActFmDataService.NOTE_PROVIDER);
 
         Date creationDate = new Date(comment.optInt("date") * 1000L);
         metadata.setValue(Metadata.CREATION_DATE, creationDate.getTime());

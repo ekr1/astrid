@@ -34,7 +34,6 @@ import com.todoroo.andlib.sql.Query;
 import com.todoroo.andlib.utility.AndroidUtilities;
 import com.todoroo.andlib.utility.Preferences;
 import com.todoroo.astrid.actfm.sync.ActFmPreferenceService;
-import com.todoroo.astrid.actfm.sync.ActFmSyncService;
 import com.todoroo.astrid.activity.AstridActivity;
 import com.todoroo.astrid.activity.FilterListFragment;
 import com.todoroo.astrid.activity.TaskListActivity;
@@ -76,7 +75,7 @@ public class TagViewFragment extends TaskListFragment {
 
     @Autowired TagDataService tagDataService;
 
-    @Autowired ActFmSyncService actFmSyncService;
+//    @Autowired ActFmSyncService actFmSyncService;
 
     @Autowired ActFmPreferenceService actFmPreferenceService;
 
